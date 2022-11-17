@@ -13,5 +13,10 @@ namespace DAL.Entities
         public string FirstName { get; set; } = null!;
 
         public string LastName { get; set; } = null!;
+
+        public int AppUserRoleId { get; set; }
+
+        public AppUserRole AppUserRole { get; set; } = null!;
+
     }
 }
