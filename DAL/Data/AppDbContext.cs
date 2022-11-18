@@ -13,5 +13,12 @@ namespace DAL.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            new DbSeeder(modelBuilder).Seed();
+        }
+        public DbSet<AppUserRole> AppUserRoles { get; set; } = null!;
     }
 }
