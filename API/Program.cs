@@ -1,8 +1,10 @@
 using System.Text;
+using BLL.Services.AppUserServices;
 using BLL.Services.Auth;
 using BLL.Services.ProductServices;
 using DAL.Data;
 using DAL.Entities;
+using DAL.Repositories.AppUserRepo;
 using DAL.Repositories.AuthRepository;
 using DAL.Repositories.ProductRepo;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -25,6 +27,9 @@ builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+builder.Services.AddScoped<IAppUserService, AppUserService>();
+builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
 
 
 

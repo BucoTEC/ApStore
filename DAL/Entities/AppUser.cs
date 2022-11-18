@@ -19,6 +19,8 @@ namespace DAL.Entities
 
         public AppUserRole AppUserRole { get; set; } = null!;
 
+        public List<CartItem>? CartItems { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
