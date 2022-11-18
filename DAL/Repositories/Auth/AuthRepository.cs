@@ -52,12 +52,17 @@ namespace DAL.Repositories.Auth
                 return "not authorized";
             }
 
-            // todo add checker for user role, find role based in user id and append it in token
+            var user = await _userManager.FindByEmailAsync(signInModel.Email);
+
+            Console.WriteLine(user.AppUserRoleId);
+
+
+            // todo refactor role checker
             var authClaims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, signInModel.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.Role, "Customer")
+                new Claim(ClaimTypes.Role, user.AppUserRoleId == 1 ? "Admin" : "Customer")
 
             };
             var authSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_configuration["JWT:Secret"]));
