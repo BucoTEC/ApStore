@@ -1,10 +1,10 @@
 using System.Text;
 using BLL.Services.Auth;
-using BLL.Services.ProductService;
+using BLL.Services.ProductServices;
 using DAL.Data;
 using DAL.Entities;
 using DAL.Repositories.AuthRepository;
-using DAL.Repositories.ProductRepository;
+using DAL.Repositories.ProductRepo;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

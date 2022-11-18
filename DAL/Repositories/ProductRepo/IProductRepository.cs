@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DAL.Entities;
 
-namespace DAL.Repositories.ProductRepository
+namespace DAL.Repositories.ProductRepo
 {
     public interface IProductRepository
     {

@@ -6,7 +6,7 @@ using DAL.Data;
 using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace DAL.Repositories.ProductRepository
+namespace DAL.Repositories.ProductRepo
 {
     public class ProductRepository : IProductRepository
     {
@@ -18,7 +18,7 @@ namespace DAL.Repositories.ProductRepository
 
         public async Task<List<Product>> GetProducts()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Products.Include(c => c.Category).ToListAsync();
         }
     }
 }

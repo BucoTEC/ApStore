@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BLL.Services.ProductService;
+using BLL.Services.ProductServices;
 using DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
 

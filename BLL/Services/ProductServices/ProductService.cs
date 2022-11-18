@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DAL.Entities;
-using DAL.Repositories.ProductRepository;
+using DAL.Repositories.ProductRepo;
 
-namespace BLL.Services.ProductService
+namespace BLL.Services.ProductServices
 {
     public class ProductService : IProductService
     {
-        private readonly ProductRepository _repository;
-        public ProductService(ProductRepository repository)
+        private readonly IProductRepository _repository;
+        public ProductService(IProductRepository repository)
         {
             _repository = repository;
         }

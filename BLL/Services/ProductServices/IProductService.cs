@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DAL.Entities;
 
-namespace BLL.Services.ProductService
+namespace BLL.Services.ProductServices
 {
     public interface IProductService
     {
