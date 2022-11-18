@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace DAL.Data
 {
@@ -38,6 +39,39 @@ namespace DAL.Data
                    new Product() { ProductId = 4, Description = "Glasses fore description", AvailbleAmount = 12, CategoryId = 4, Price = 523.99M, Name = "Glasses fore" }
 
             );
+
+            // seed admin
+            var appUser = new AppUser
+            {
+                Email = "adnan@gmail.com",
+                FirstName = "Adnan",
+                LastName = "Bucalovic",
+                UserName = "adnan@gmail.com",
+                AppUserRoleId = 2
+            };
+
+            //set user password
+            PasswordHasher<AppUser> ph = new PasswordHasher<AppUser>();
+            appUser.PasswordHash = ph.HashPassword(appUser, "string");
+
+            //seed admin user
+            modelBuilder.Entity<AppUser>().HasData(appUser);
+
+            // seed customer
+            var appCustomer = new AppUser
+            {
+                Email = "advan@gmail.com",
+                FirstName = "Advan",
+                LastName = "Bucalovic",
+                UserName = "advan@gmail.com",
+                AppUserRoleId = 1
+            };
+
+            //set user password
+            appCustomer.PasswordHash = ph.HashPassword(appCustomer, "string");
+
+            //seed customer user
+            modelBuilder.Entity<AppUser>().HasData(appCustomer);
         }
     }
 }
