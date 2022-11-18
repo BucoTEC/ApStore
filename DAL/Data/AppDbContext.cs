@@ -20,5 +20,22 @@ namespace DAL.Data
             new DbSeeder(modelBuilder).Seed();
         }
         public DbSet<AppUserRole> AppUserRoles { get; set; } = null!;
+
+        public DbSet<CartItem> CartItems { get; set; } = null!;
+
+        public DbSet<Category> Categories { get; set; } = null!;
+
+        public DbSet<Order> Orders { get; set; } = null!;
+
+        public DbSet<OrderItem> OrderItems { get; set; } = null!;
+
+        public DbSet<Product> Products { get; set; } = null!;
+
+
+
+
+
+
+
     }
 }
