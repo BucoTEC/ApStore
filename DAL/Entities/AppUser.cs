@@ -13,9 +13,17 @@ namespace DAL.Entities
 
         public string LastName { get; set; } = null!;
 
+        public bool IsActive { get; set; } = true;
+
         public int AppUserRoleId { get; set; }
 
         public AppUserRole AppUserRole { get; set; } = null!;
+
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+        public DateTime DeletedAt { get; set; } = DateTime.Now;
 
     }
 }
