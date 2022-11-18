@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using DAL.Entities;
 
-namespace DAL.Repositories.ProductRepository
+namespace BLL.Services.ProductService
 {
-    public interface IProductInterface
+    public interface IProductService
     {
         Task<List<Product>> GetProducts();
+
     }
 }
