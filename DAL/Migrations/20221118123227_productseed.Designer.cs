@@ -4,6 +4,7 @@ using DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221118123227_productseed")]
+    partial class productseed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,7 +125,7 @@ namespace DAL.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedAt")
+                    b.Property<DateTime>("DeletedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -133,7 +135,7 @@ namespace DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("AppUserRoleId");
@@ -144,14 +146,18 @@ namespace DAL.Migrations
                         new
                         {
                             AppUserRoleId = 1,
-                            CreatedAt = new DateTime(2022, 11, 18, 13, 35, 50, 309, DateTimeKind.Local).AddTicks(6421),
-                            Name = "Customer"
+                            CreatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6463),
+                            DeletedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6510),
+                            Name = "Customer",
+                            UpdatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6509)
                         },
                         new
                         {
                             AppUserRoleId = 2,
-                            CreatedAt = new DateTime(2022, 11, 18, 13, 35, 50, 309, DateTimeKind.Local).AddTicks(6463),
-                            Name = "Admin"
+                            CreatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6517),
+                            DeletedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6520),
+                            Name = "Admin",
+                            UpdatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6518)
                         });
                 });
 
@@ -172,7 +178,7 @@ namespace DAL.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedAt")
+                    b.Property<DateTime>("DeletedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("ProductId")
@@ -181,7 +187,7 @@ namespace DAL.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("CartItemId");
@@ -204,7 +210,7 @@ namespace DAL.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedAt")
+                    b.Property<DateTime>("DeletedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -217,7 +223,7 @@ namespace DAL.Migrations
                     b.Property<int>("ParentId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("CategoryId");
@@ -228,30 +234,38 @@ namespace DAL.Migrations
                         new
                         {
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2022, 11, 18, 13, 35, 50, 309, DateTimeKind.Local).AddTicks(6617),
+                            CreatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6645),
+                            DeletedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6648),
                             Name = "Single-Vision",
-                            ParentId = 0
+                            ParentId = 0,
+                            UpdatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6647)
                         },
                         new
                         {
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2022, 11, 18, 13, 35, 50, 309, DateTimeKind.Local).AddTicks(6621),
+                            CreatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6651),
+                            DeletedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6653),
                             Name = "Bifocals",
-                            ParentId = 0
+                            ParentId = 0,
+                            UpdatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6652)
                         },
                         new
                         {
                             CategoryId = 3,
-                            CreatedAt = new DateTime(2022, 11, 18, 13, 35, 50, 309, DateTimeKind.Local).AddTicks(6623),
+                            CreatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6656),
+                            DeletedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6658),
                             Name = "Trifocals",
-                            ParentId = 0
+                            ParentId = 0,
+                            UpdatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6657)
                         },
                         new
                         {
                             CategoryId = 4,
-                            CreatedAt = new DateTime(2022, 11, 18, 13, 35, 50, 309, DateTimeKind.Local).AddTicks(6625),
+                            CreatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6660),
+                            DeletedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6662),
                             Name = "Progressives",
-                            ParentId = 0
+                            ParentId = 0,
+                            UpdatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6661)
                         });
                 });
 
@@ -284,7 +298,7 @@ namespace DAL.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedAt")
+                    b.Property<DateTime>("DeletedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("Delivered")
@@ -298,7 +312,7 @@ namespace DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("OrderId");
@@ -319,7 +333,7 @@ namespace DAL.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedAt")
+                    b.Property<DateTime>("DeletedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
@@ -338,7 +352,7 @@ namespace DAL.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("OrderItemId");
@@ -365,7 +379,7 @@ namespace DAL.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedAt")
+                    b.Property<DateTime>("DeletedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -382,7 +396,7 @@ namespace DAL.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,4)");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ProductId");
@@ -397,40 +411,48 @@ namespace DAL.Migrations
                             ProductId = 1,
                             AvailbleAmount = 9,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2022, 11, 18, 13, 35, 50, 309, DateTimeKind.Local).AddTicks(6641),
+                            CreatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6676),
+                            DeletedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6679),
                             Description = "Glasses one description",
                             Name = "Glasses one",
-                            Price = 123.99m
+                            Price = 123.99m,
+                            UpdatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6678)
                         },
                         new
                         {
                             ProductId = 2,
                             AvailbleAmount = 7,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2022, 11, 18, 13, 35, 50, 309, DateTimeKind.Local).AddTicks(6648),
+                            CreatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6685),
+                            DeletedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6687),
                             Description = "Glasses two description",
                             Name = "Glasses two",
-                            Price = 333.99m
+                            Price = 333.99m,
+                            UpdatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6686)
                         },
                         new
                         {
                             ProductId = 3,
                             AvailbleAmount = 4,
                             CategoryId = 3,
-                            CreatedAt = new DateTime(2022, 11, 18, 13, 35, 50, 309, DateTimeKind.Local).AddTicks(6650),
+                            CreatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6690),
+                            DeletedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6692),
                             Description = "Glasses three description",
                             Name = "Glasses three",
-                            Price = 423.99m
+                            Price = 423.99m,
+                            UpdatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6691)
                         },
                         new
                         {
                             ProductId = 4,
                             AvailbleAmount = 12,
                             CategoryId = 4,
-                            CreatedAt = new DateTime(2022, 11, 18, 13, 35, 50, 309, DateTimeKind.Local).AddTicks(6652),
+                            CreatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6694),
+                            DeletedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6697),
                             Description = "Glasses fore description",
                             Name = "Glasses fore",
-                            Price = 523.99m
+                            Price = 523.99m,
+                            UpdatedAt = new DateTime(2022, 11, 18, 13, 32, 27, 433, DateTimeKind.Local).AddTicks(6696)
                         });
                 });
 
