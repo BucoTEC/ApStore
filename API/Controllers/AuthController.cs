@@ -28,7 +28,7 @@ namespace API.Controllers
                 return Ok(res.Succeeded);
             }
 
-            return Unauthorized();
+            return Unauthorized(res);
         }
 
 
