@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-namespace DAL.Repositories.Auth
+namespace DAL.Repositories.AuthRepository
 {
     public class AuthRepository : IAuthRepository
     {
