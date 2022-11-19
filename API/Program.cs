@@ -7,6 +7,7 @@ using DAL.Entities;
 using DAL.Repositories.AppUserRepo;
 using DAL.Repositories.AuthRepository;
 using DAL.Repositories.ProductRepo;
+using DAL.UOW;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -23,13 +24,15 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options => { options.User.Re
 ).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+// builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+// builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddScoped<IAppUserService, AppUserService>();
-builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
+// builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 

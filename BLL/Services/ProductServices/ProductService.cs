@@ -4,20 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using DAL.Entities;
 using DAL.Repositories.ProductRepo;
+using DAL.UOW;
 
 namespace BLL.Services.ProductServices
 {
     public class ProductService : IProductService
     {
-        private readonly IProductRepository _repository;
-        public ProductService(IProductRepository repository)
+        private readonly IUnitOfWork _unitOfWork;
+        public ProductService(IUnitOfWork unitOfWork)
         {
-            _repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<List<Product>> GetProducts()
         {
-            return await _repository.GetProducts();
+            return await _unitOfWork.Product.GetProducts();
         }
     }
 }

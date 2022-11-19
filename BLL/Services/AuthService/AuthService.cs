@@ -4,29 +4,30 @@ using System.Linq;
 using System.Threading.Tasks;
 using DAL.Dtos;
 using DAL.Repositories.AuthRepository;
+using DAL.UOW;
 using Microsoft.AspNetCore.Identity;
 
 namespace BLL.Services.Auth
 {
     public class AuthService : IAuthService
     {
-        private readonly IAuthRepository _repo;
-        public AuthService(IAuthRepository repo)
+        private readonly IUnitOfWork _unitOfWork;
+        public AuthService(IUnitOfWork unitOfWork)
         {
-            _repo = repo;
+            _unitOfWork = unitOfWork;
         }
 
 
         public async Task<IdentityResult> Signup(SignUpModel data)
         {
 
-            return await _repo.Signup(data);
+            return await _unitOfWork.Auth.Signup(data);
         }
 
         public async Task<string> Login(SignInModel data)
         {
 
-            return await _repo.LoginAsync(data);
+            return await _unitOfWork.Auth.LoginAsync(data);
         }
 
     }
