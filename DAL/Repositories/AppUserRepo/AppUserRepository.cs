@@ -18,7 +18,7 @@ namespace DAL.Repositories.AppUserRepo
 
         public async Task<List<AppUser>> GetAppUsers()
         {
-            return await _userManager.Users.Include(c => c.CartItems).ToListAsync();
+            return await _userManager.Users.Include(c => c.CartItems).Include(o => o.Orders).ToListAsync();
         }
     }
 }

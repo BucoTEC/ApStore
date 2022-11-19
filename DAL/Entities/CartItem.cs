@@ -19,7 +19,7 @@ namespace DAL.Entities
 
         public Product Product { get; set; } = null!;
 
-        public String AppUserId { get; set; } = null!;
+        public string AppUserId { get; set; } = null!;
 
         public AppUser AppUser { get; set; } = null!;
 

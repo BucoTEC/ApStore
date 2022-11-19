@@ -21,6 +21,9 @@ namespace DAL.Entities
 
         public List<CartItem>? CartItems { get; set; }
 
+        public List<Order>? Orders { get; set; }
+
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         public DateTime UpdatedAt { get; set; } = DateTime.Now;

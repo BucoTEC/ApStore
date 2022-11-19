@@ -21,7 +21,7 @@ namespace DAL.Entities
 
         public bool Delivered { get; set; }
 
-        public int AppUserId { get; set; }
+        public string AppUserId { get; set; } = null!;
         public AppUser AppUser { get; set; } = null!;
 
 

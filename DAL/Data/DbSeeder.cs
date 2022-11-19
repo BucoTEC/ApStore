@@ -80,12 +80,27 @@ namespace DAL.Data
             //seed customer user
             modelBuilder.Entity<AppUser>().HasData(appCustomer);
 
-
+            // cart item seed
             modelBuilder.Entity<CartItem>().HasData(
                    new CartItem() { CartItemId = 1, Quantity = 2, ProductId = 1, Price = 123.99M, AppUserId = CUSTOMER_ID },
                    new CartItem() { CartItemId = 2, Quantity = 4, ProductId = 2, Price = 333.99M, AppUserId = CUSTOMER_ID },
                    new CartItem() { CartItemId = 3, Quantity = 1, ProductId = 3, Price = 423.99M, AppUserId = CUSTOMER_ID },
                    new CartItem() { CartItemId = 4, Quantity = 2, ProductId = 4, Price = 523.99M, AppUserId = CUSTOMER_ID }
+
+            );
+
+            // order item seed
+            modelBuilder.Entity<OrderItem>().HasData(
+                   new OrderItem() { OrderItemId = 1, Name = "Glasses one", Quantity = 1, ProductId = 1, ShippingPrice = 9.99M, Price = 123.99M, OrderId = 1 },
+                   new OrderItem() { OrderItemId = 2, Name = "Glasses two", Quantity = 3, ProductId = 2, ShippingPrice = 9.99M, Price = 333.99M, OrderId = 1 },
+                   new OrderItem() { OrderItemId = 3, Name = "Glasses three", Quantity = 1, ProductId = 3, ShippingPrice = 9.99M, Price = 423.99M, OrderId = 2 },
+                   new OrderItem() { OrderItemId = 4, Name = "Glasses four", Quantity = 2, ProductId = 4, ShippingPrice = 9.99M, Price = 523.99M, OrderId = 2 }
+
+            );
+
+            modelBuilder.Entity<Order>().HasData(
+                   new Order() { OrderId = 1, Address = "Kemala Kapetanovica 13.", Country = "BiH", City = "Sarajevo", PhoneNumber = "062656323", ReceiverName = "Advan Bucalovic", Delivered = true, AppUserId = CUSTOMER_ID },
+                   new Order() { OrderId = 2, Address = "Kemala Kapetanovica 13.", Country = "BiH", City = "Sarajevo", PhoneNumber = "062656323", ReceiverName = "Advan Bucalovic", Delivered = false, AppUserId = CUSTOMER_ID }
 
             );
         }
