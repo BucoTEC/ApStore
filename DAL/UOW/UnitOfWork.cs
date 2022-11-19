@@ -23,7 +23,9 @@ namespace DAL.UOW
         public IAuthRepository Auth { get; private set; }
 
         private readonly UserManager<AppUser> _userManager;
+
         private readonly SignInManager<AppUser> _signInManager;
+
         private readonly IConfiguration _configuration;
 
         public UnitOfWork(AppDbContext context, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,
