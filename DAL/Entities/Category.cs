@@ -5,14 +5,16 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    public class AppUserRole : EntityTimeStamp
+    public class Category : EntityTimeStamp
     {
-        public int AppUserRoleId { get; set; }
+
+        public int CategoryId { get; set; }
 
         public string Name { get; set; } = null!;
 
         public string? Description { get; set; }
 
+        public int ParentId { get; set; }
 
     }
 }

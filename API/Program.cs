@@ -1,8 +1,13 @@
 using System.Text;
+using BLL.Services.AppUserServices;
 using BLL.Services.Auth;
+using BLL.Services.ProductServices;
 using DAL.Data;
 using DAL.Entities;
-using DAL.Repositories.Auth;
+using DAL.Repositories.AppUserRepo;
+using DAL.Repositories.AuthRepository;
+using DAL.Repositories.ProductRepo;
+using DAL.UOW;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -19,10 +24,19 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options => { options.User.Re
 ).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+
+builder.Services.AddScoped<IProductService, ProductService>();
+
+builder.Services.AddScoped<IAppUserService, AppUserService>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
-builder.Services.AddControllers();
+
+
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+); ;
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 

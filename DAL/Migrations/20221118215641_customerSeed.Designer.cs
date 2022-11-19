@@ -4,6 +4,7 @@ using DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221118215641_customerSeed")]
+    partial class customerSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,44 +116,44 @@ namespace DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "02174cf0-9412-4cfe-afbf-59f706d72cf6",
+                            Id = "9122bb88-74ba-4cec-8d12-60799684a4b4",
                             AccessFailedCount = 0,
                             AppUserRoleId = 2,
-                            ConcurrencyStamp = "7a9eddc4-a8a8-4561-9599-f24d14e7726b",
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 508, DateTimeKind.Local).AddTicks(4561),
-                            DeletedAt = new DateTime(2022, 11, 19, 15, 12, 45, 508, DateTimeKind.Local).AddTicks(4563),
+                            ConcurrencyStamp = "1f9ae183-c94d-48a2-aafc-2297da20e456",
+                            CreatedAt = new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(483),
+                            DeletedAt = new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(485),
                             Email = "adnan@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Adnan",
                             IsActive = true,
                             LastName = "Bucalovic",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAED0vmgKdHZNBbmphgmGTINvEX7+FUgV+0PXp5BN7v8gVcyNv/4Nprq9N4OBv1wriew==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELjKoRCDWamazcoxXs86iJ4OHfrWZ5ZPv0sxzbzkBsUMKXuOEWpBJv2uZN5KES8ONA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "561f15f4-f2c1-4286-b273-a13657f7bdec",
+                            SecurityStamp = "c8ca4864-7097-4f22-8427-17c654723593",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 508, DateTimeKind.Local).AddTicks(4562),
+                            UpdatedAt = new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(484),
                             UserName = "adnan@gmail.com"
                         },
                         new
                         {
-                            Id = "341743f0-asd2-42de-afbf-59kmkkmk72cf6",
+                            Id = "168a2f66-5e90-464f-9f42-06ce1d166ce5",
                             AccessFailedCount = 0,
                             AppUserRoleId = 1,
-                            ConcurrencyStamp = "2fd354cf-c4a5-4507-80cf-c102c91a5f8a",
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 509, DateTimeKind.Local).AddTicks(9110),
-                            DeletedAt = new DateTime(2022, 11, 19, 15, 12, 45, 509, DateTimeKind.Local).AddTicks(9118),
+                            ConcurrencyStamp = "3150a3d7-9853-495f-9b57-2c5277cea72f",
+                            CreatedAt = new DateTime(2022, 11, 18, 22, 56, 41, 264, DateTimeKind.Local).AddTicks(2517),
+                            DeletedAt = new DateTime(2022, 11, 18, 22, 56, 41, 264, DateTimeKind.Local).AddTicks(2520),
                             Email = "advan@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Advan",
                             IsActive = true,
                             LastName = "Bucalovic",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEHi+8SDihtBxFZmH1RRXzV0wQcQmeqJUF1BFUOhSdoQ17zyap/jSH35MzmUoUrWXlg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOI4YrwN6lQJHL38R5Soh+MwE6adCEj8VO6nZ2ayiwpW4Mu5oHjEPaAIMYpofRirCA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "524f6a42-4212-460c-bbe1-bbe0f589d4a3",
+                            SecurityStamp = "fac1855e-92de-43f8-8f3f-f317eecc8b03",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 509, DateTimeKind.Local).AddTicks(9117),
+                            UpdatedAt = new DateTime(2022, 11, 18, 22, 56, 41, 264, DateTimeKind.Local).AddTicks(2519),
                             UserName = "advan@gmail.com"
                         });
                 });
@@ -188,13 +190,13 @@ namespace DAL.Migrations
                         new
                         {
                             AppUserRoleId = 1,
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 508, DateTimeKind.Local).AddTicks(3714),
+                            CreatedAt = new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(291),
                             Name = "Customer"
                         },
                         new
                         {
                             AppUserRoleId = 2,
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 508, DateTimeKind.Local).AddTicks(3992),
+                            CreatedAt = new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(345),
                             Name = "Admin"
                         });
                 });
@@ -207,8 +209,10 @@ namespace DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartItemId"), 1L, 1);
 
-                    b.Property<string>("AppUserId")
-                        .IsRequired()
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AppUserId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -216,9 +220,6 @@ namespace DAL.Migrations
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,4)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -231,49 +232,11 @@ namespace DAL.Migrations
 
                     b.HasKey("CartItemId");
 
-                    b.HasIndex("AppUserId");
+                    b.HasIndex("AppUserId1");
 
                     b.HasIndex("ProductId");
 
                     b.ToTable("CartItems");
-
-                    b.HasData(
-                        new
-                        {
-                            CartItemId = 1,
-                            AppUserId = "341743f0-asd2-42de-afbf-59kmkkmk72cf6",
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 511, DateTimeKind.Local).AddTicks(1242),
-                            Price = 123.99m,
-                            ProductId = 1,
-                            Quantity = 2
-                        },
-                        new
-                        {
-                            CartItemId = 2,
-                            AppUserId = "341743f0-asd2-42de-afbf-59kmkkmk72cf6",
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 511, DateTimeKind.Local).AddTicks(1245),
-                            Price = 333.99m,
-                            ProductId = 2,
-                            Quantity = 4
-                        },
-                        new
-                        {
-                            CartItemId = 3,
-                            AppUserId = "341743f0-asd2-42de-afbf-59kmkkmk72cf6",
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 511, DateTimeKind.Local).AddTicks(1247),
-                            Price = 423.99m,
-                            ProductId = 3,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            CartItemId = 4,
-                            AppUserId = "341743f0-asd2-42de-afbf-59kmkkmk72cf6",
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 511, DateTimeKind.Local).AddTicks(1248),
-                            Price = 523.99m,
-                            ProductId = 4,
-                            Quantity = 2
-                        });
                 });
 
             modelBuilder.Entity("DAL.Entities.Category", b =>
@@ -311,28 +274,28 @@ namespace DAL.Migrations
                         new
                         {
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 508, DateTimeKind.Local).AddTicks(4457),
+                            CreatedAt = new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(450),
                             Name = "Single-Vision",
                             ParentId = 0
                         },
                         new
                         {
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 508, DateTimeKind.Local).AddTicks(4459),
+                            CreatedAt = new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(452),
                             Name = "Bifocals",
                             ParentId = 0
                         },
                         new
                         {
                             CategoryId = 3,
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 508, DateTimeKind.Local).AddTicks(4461),
+                            CreatedAt = new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(453),
                             Name = "Trifocals",
                             ParentId = 0
                         },
                         new
                         {
                             CategoryId = 4,
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 508, DateTimeKind.Local).AddTicks(4462),
+                            CreatedAt = new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(455),
                             Name = "Progressives",
                             ParentId = 0
                         });
@@ -350,8 +313,10 @@ namespace DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AppUserId")
-                        .IsRequired()
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AppUserId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("City")
@@ -384,35 +349,9 @@ namespace DAL.Migrations
 
                     b.HasKey("OrderId");
 
-                    b.HasIndex("AppUserId");
+                    b.HasIndex("AppUserId1");
 
                     b.ToTable("Orders");
-
-                    b.HasData(
-                        new
-                        {
-                            OrderId = 1,
-                            Address = "Kemala Kapetanovica 13.",
-                            AppUserId = "341743f0-asd2-42de-afbf-59kmkkmk72cf6",
-                            City = "Sarajevo",
-                            Country = "BiH",
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 511, DateTimeKind.Local).AddTicks(1286),
-                            Delivered = true,
-                            PhoneNumber = "062656323",
-                            ReceiverName = "Advan Bucalovic"
-                        },
-                        new
-                        {
-                            OrderId = 2,
-                            Address = "Kemala Kapetanovica 13.",
-                            AppUserId = "341743f0-asd2-42de-afbf-59kmkkmk72cf6",
-                            City = "Sarajevo",
-                            Country = "BiH",
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 511, DateTimeKind.Local).AddTicks(1289),
-                            Delivered = false,
-                            PhoneNumber = "062656323",
-                            ReceiverName = "Advan Bucalovic"
-                        });
                 });
 
             modelBuilder.Entity("DAL.Entities.OrderItem", b =>
@@ -445,9 +384,6 @@ namespace DAL.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("ShippingPrice")
-                        .HasColumnType("decimal(18,4)");
-
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -456,52 +392,6 @@ namespace DAL.Migrations
                     b.HasIndex("OrderId");
 
                     b.ToTable("OrderItems");
-
-                    b.HasData(
-                        new
-                        {
-                            OrderItemId = 1,
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 511, DateTimeKind.Local).AddTicks(1266),
-                            Name = "Glasses one",
-                            OrderId = 1,
-                            Price = 123.99m,
-                            ProductId = 1,
-                            Quantity = 1,
-                            ShippingPrice = 9.99m
-                        },
-                        new
-                        {
-                            OrderItemId = 2,
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 511, DateTimeKind.Local).AddTicks(1269),
-                            Name = "Glasses two",
-                            OrderId = 1,
-                            Price = 333.99m,
-                            ProductId = 2,
-                            Quantity = 3,
-                            ShippingPrice = 9.99m
-                        },
-                        new
-                        {
-                            OrderItemId = 3,
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 511, DateTimeKind.Local).AddTicks(1270),
-                            Name = "Glasses three",
-                            OrderId = 2,
-                            Price = 423.99m,
-                            ProductId = 3,
-                            Quantity = 1,
-                            ShippingPrice = 9.99m
-                        },
-                        new
-                        {
-                            OrderItemId = 4,
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 511, DateTimeKind.Local).AddTicks(1272),
-                            Name = "Glasses four",
-                            OrderId = 2,
-                            Price = 523.99m,
-                            ProductId = 4,
-                            Quantity = 2,
-                            ShippingPrice = 9.99m
-                        });
                 });
 
             modelBuilder.Entity("DAL.Entities.Product", b =>
@@ -553,7 +443,7 @@ namespace DAL.Migrations
                             ProductId = 1,
                             AvailbleAmount = 9,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 508, DateTimeKind.Local).AddTicks(4523),
+                            CreatedAt = new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(471),
                             Description = "Glasses one description",
                             Name = "Glasses one",
                             Price = 123.99m
@@ -563,7 +453,7 @@ namespace DAL.Migrations
                             ProductId = 2,
                             AvailbleAmount = 7,
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 508, DateTimeKind.Local).AddTicks(4535),
+                            CreatedAt = new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(476),
                             Description = "Glasses two description",
                             Name = "Glasses two",
                             Price = 333.99m
@@ -573,7 +463,7 @@ namespace DAL.Migrations
                             ProductId = 3,
                             AvailbleAmount = 4,
                             CategoryId = 3,
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 508, DateTimeKind.Local).AddTicks(4537),
+                            CreatedAt = new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(477),
                             Description = "Glasses three description",
                             Name = "Glasses three",
                             Price = 423.99m
@@ -583,7 +473,7 @@ namespace DAL.Migrations
                             ProductId = 4,
                             AvailbleAmount = 12,
                             CategoryId = 4,
-                            CreatedAt = new DateTime(2022, 11, 19, 15, 12, 45, 508, DateTimeKind.Local).AddTicks(4538),
+                            CreatedAt = new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(479),
                             Description = "Glasses fore description",
                             Name = "Glasses fore",
                             Price = 523.99m
@@ -738,9 +628,7 @@ namespace DAL.Migrations
                 {
                     b.HasOne("DAL.Entities.AppUser", "AppUser")
                         .WithMany("CartItems")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AppUserId1");
 
                     b.HasOne("DAL.Entities.Product", "Product")
                         .WithMany()
@@ -756,10 +644,8 @@ namespace DAL.Migrations
             modelBuilder.Entity("DAL.Entities.Order", b =>
                 {
                     b.HasOne("DAL.Entities.AppUser", "AppUser")
-                        .WithMany("Orders")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("AppUserId1");
 
                     b.Navigation("AppUser");
                 });
@@ -840,8 +726,6 @@ namespace DAL.Migrations
             modelBuilder.Entity("DAL.Entities.AppUser", b =>
                 {
                     b.Navigation("CartItems");
-
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("DAL.Entities.Order", b =>

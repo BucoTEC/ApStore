@@ -9,9 +9,9 @@ namespace DAL.Entities
     {
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+        public DateTime? UpdatedAt { get; set; } = null;
 
-        public DateTime DeletedAt { get; set; } = DateTime.Now;
+        public DateTime? DeletedAt { get; set; } = null;
 
     }
 }

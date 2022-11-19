@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using DAL.Dtos;
 using Microsoft.AspNetCore.Identity;
 
-namespace DAL.Repositories.Auth
+namespace DAL.Repositories.AuthRepository
 {
     public interface IAuthRepository
     {
