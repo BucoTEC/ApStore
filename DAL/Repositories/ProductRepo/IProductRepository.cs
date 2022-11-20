@@ -9,5 +9,20 @@ namespace DAL.Repositories.ProductRepo
     public interface IProductRepository
     {
         Task<List<Product>> GetProducts();
+
+        Task<Product> GetProduct(int id);
+
+
+        Task CreateProduct();
+
+        Task UpdateProduct();
+
+        Task DeleteProduct();
+
+
+
+
+
+
     }
 }

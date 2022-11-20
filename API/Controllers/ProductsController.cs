@@ -26,5 +26,14 @@ namespace API.Controllers
             return Ok(prods);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> GetProduct(int id)
+
+        {
+            var product = await _productService.GetProduct(id);
+
+            return Ok(product);
+        }
+
     }
 }

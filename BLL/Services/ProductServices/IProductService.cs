@@ -9,6 +9,7 @@ namespace BLL.Services.ProductServices
     public interface IProductService
     {
         Task<List<Product>> GetProducts();
+        Task<Product> GetProduct(int id);
 
     }
 }

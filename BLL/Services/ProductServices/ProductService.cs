@@ -20,5 +20,11 @@ namespace BLL.Services.ProductServices
         {
             return await _unitOfWork.Product.GetProducts();
         }
+
+        public async Task<Product> GetProduct(int id)
+        {
+            return await _unitOfWork.Product.GetProduct(id);
+        }
+
     }
 }
