@@ -26,5 +26,17 @@ namespace BLL.Services.ProductServices
             return await _unitOfWork.Product.GetProduct(id);
         }
 
+        public async Task<bool> DeleteProduct(int id)
+        {
+            var DeleteProduct = await _unitOfWork.Product.DeleteProduct(id);
+
+            if (DeleteProduct == true)
+            {
+
+                await _unitOfWork.CompleteAsync();
+            }
+
+            return DeleteProduct;
+        }
     }
 }

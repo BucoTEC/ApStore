@@ -11,5 +11,8 @@ namespace BLL.Services.ProductServices
         Task<List<Product>> GetProducts();
         Task<Product> GetProduct(int id);
 
+        Task<bool> DeleteProduct(int id);
+
+
     }
 }

@@ -26,6 +26,22 @@ namespace API.Controllers
             return Ok(prods);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<bool>> DeleteProduct(int id)
+
+        {
+
+            var product = await _productService.DeleteProduct(id);
+
+            if (product != true)
+            {
+                return NotFound("No product with this id");
+            }
+
+            return Ok(product);
+        }
+
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
 
@@ -34,6 +50,8 @@ namespace API.Controllers
 
             return Ok(product);
         }
+
+
 
     }
 }

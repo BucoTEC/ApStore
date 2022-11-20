@@ -16,7 +16,7 @@ namespace API.Controllers
         public IActionResult HandleError()
         {
             var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
-            return StatusCode(404, context?.Error.Message);
+            return Problem(context?.Error.Message);
         }
     }
 }

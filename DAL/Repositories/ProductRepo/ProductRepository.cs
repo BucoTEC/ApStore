@@ -21,21 +21,31 @@ namespace DAL.Repositories.ProductRepo
             throw new NotImplementedException();
         }
 
-        public Task DeleteProduct()
+        public async Task<bool> DeleteProduct(int id)
         {
-            throw new NotImplementedException();
+            var product = await _context.Products.Where(d => d.DeletedAt == null).FirstOrDefaultAsync(p => p.ProductId == id);
+
+            if (product != null)
+            {
+                product.DeletedAt = DateTime.Now;
+
+                return true;
+            }
+
+            return false;
+
         }
 
 
 
         public async Task<List<Product>> GetProducts()
         {
-            return await _context.Products.Include(c => c.Category).ToListAsync();
+            return await _context.Products.Where(d => d.DeletedAt == null).ToListAsync();
         }
 
         public async Task<Product> GetProduct(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _context.Products.Where(d => d.DeletedAt == null).FirstOrDefaultAsync(p => p.ProductId == id);
 
             if (product != null)
             {

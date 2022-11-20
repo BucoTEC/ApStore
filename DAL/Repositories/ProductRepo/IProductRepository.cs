@@ -17,7 +17,7 @@ namespace DAL.Repositories.ProductRepo
 
         Task UpdateProduct();
 
-        Task DeleteProduct();
+        Task<bool> DeleteProduct(int id);
 
 
 
