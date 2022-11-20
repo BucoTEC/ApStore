@@ -27,7 +27,7 @@ namespace BLL.Services.Auth
         public async Task<string> Login(SignInModel data)
         {
 
-            return await _unitOfWork.Auth.LoginAsync(data);
+            return await _unitOfWork.Auth.Login(data);
         }
 
     }

@@ -42,7 +42,7 @@ namespace DAL.Repositories.AuthRepository
         }
 
 
-        public async Task<string> LoginAsync(SignInModel signInModel)
+        public async Task<string> Login(SignInModel signInModel)
         {
             var result = await _signInManager.PasswordSignInAsync(signInModel.Email, signInModel.Password, false, false);
 
@@ -78,14 +78,6 @@ namespace DAL.Repositories.AuthRepository
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public Task<IdentityResult> Signup(object data)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<string> LoginAsync(object signInModel)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

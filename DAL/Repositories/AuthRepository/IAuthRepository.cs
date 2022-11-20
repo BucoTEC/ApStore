@@ -11,6 +11,6 @@ namespace DAL.Repositories.AuthRepository
     {
         Task<IdentityResult> Signup(SignUpModel data);
 
-        Task<string> LoginAsync(SignInModel signInModel);
+        Task<string> Login(SignInModel signInModel);
     }
 }

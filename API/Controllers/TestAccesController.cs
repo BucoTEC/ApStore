@@ -35,6 +35,7 @@ namespace API.Controllers
         [Authorize(Roles = "Customer")]
         public string CustomerUSerAccess()
         {
+
             return "Hello dear customer user";
         }
     }
