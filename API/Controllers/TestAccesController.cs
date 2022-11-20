@@ -21,6 +21,7 @@ namespace API.Controllers
         [HttpGet("all-users-access")]
         public string AllUsers()
         {
+            // throw new Exception("Hello from the hideen one");
             return "Hello all users";
         }
 

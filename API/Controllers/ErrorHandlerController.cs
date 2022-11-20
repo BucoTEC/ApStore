@@ -11,6 +11,7 @@ namespace API.Controllers
     [ApiController]
     public class ErrorHandlerController : ControllerBase
     {
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("/error")]
         public IActionResult HandleError()
         {
