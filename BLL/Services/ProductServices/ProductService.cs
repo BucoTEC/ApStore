@@ -48,5 +48,14 @@ namespace BLL.Services.ProductServices
 
             return createdProduct;
         }
+
+        public async Task<Product> UpdateProduct(CreateUpdateProductDto productDto, int productId)
+        {
+            var updatedProduct = await _unitOfWork.Product.UpdateProduct(productDto, productId);
+
+            await _unitOfWork.CompleteAsync();
+
+            return updatedProduct;
+        }
     }
 }

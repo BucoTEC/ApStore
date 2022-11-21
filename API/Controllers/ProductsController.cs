@@ -60,6 +60,15 @@ namespace API.Controllers
             return Ok(createdProduct);
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Product>> UpdateProduct([FromBody] CreateUpdateProductDto productDto, [FromRoute] int id)
+
+        {
+            var product = await _productService.UpdateProduct(productDto, id);
+
+            return Ok(product);
+        }
+
 
     }
 }

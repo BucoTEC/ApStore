@@ -16,6 +16,9 @@ namespace BLL.Services.ProductServices
 
         Task<Product> CreateProduct(CreateUpdateProductDto productDto);
 
+        Task<Product> UpdateProduct(CreateUpdateProductDto productDto, int productId);
+
+
 
     }
 }

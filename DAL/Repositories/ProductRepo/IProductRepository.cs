@@ -16,7 +16,7 @@ namespace DAL.Repositories.ProductRepo
 
         Task<Product> CreateProduct(CreateUpdateProductDto productDto);
 
-        Task UpdateProduct();
+        Task<Product> UpdateProduct(CreateUpdateProductDto productDto, int productId);
 
         Task<bool> DeleteProduct(int id);
 

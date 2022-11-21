@@ -51,10 +51,7 @@ namespace DAL.Repositories.ProductRepo
             }
             throw new Exception("No product with this id");
         }
-        public Task UpdateProduct()
-        {
-            throw new NotImplementedException();
-        }
+
 
         public async Task<Product> CreateProduct(CreateUpdateProductDto productDto)
         {
@@ -65,7 +62,7 @@ namespace DAL.Repositories.ProductRepo
                 throw new Exception("Product already exists");
             }
 
-            var category = await _context.Products.FindAsync(productDto.CategoryId);
+            var category = await _context.Categories.FindAsync(productDto.CategoryId);
 
             if (category == null)
             {
@@ -87,6 +84,34 @@ namespace DAL.Repositories.ProductRepo
             await _context.Products.AddAsync(newProduct);
 
             return newProduct;
+        }
+
+        public async Task<Product> UpdateProduct(CreateUpdateProductDto productDto, int productId)
+        {
+
+            var category = await _context.Categories.FindAsync(productDto.CategoryId);
+
+            if (category == null)
+            {
+                throw new Exception("No valid category selected");
+
+            }
+
+            var product = await _context.Products.Where(d => d.DeletedAt == null).FirstOrDefaultAsync(p => p.ProductId == productId);
+
+            if (product != null)
+            {
+
+                product.Name = productDto.Name;
+                product.Description = productDto.Description;
+                product.Image = productDto.Image;
+                product.Price = productDto.Price;
+                product.AvailbleAmount = productDto.AvailbleAmount;
+                product.CategoryId = productDto.CategoryId;
+
+                return product;
+            }
+            throw new Exception("No product with this id");
         }
     }
 }
