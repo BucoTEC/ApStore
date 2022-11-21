@@ -108,6 +108,7 @@ namespace DAL.Repositories.ProductRepo
                 product.Price = productDto.Price;
                 product.AvailbleAmount = productDto.AvailbleAmount;
                 product.CategoryId = productDto.CategoryId;
+                product.UpdatedAt = DateTime.Now;
 
                 return product;
             }
