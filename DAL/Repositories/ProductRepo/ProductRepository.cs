@@ -56,7 +56,7 @@ namespace DAL.Repositories.ProductRepo
             throw new NotImplementedException();
         }
 
-        public async Task<Product> CreateProduct(CreateProductDto productDto)
+        public async Task<Product> CreateProduct(CreateUpdateProductDto productDto)
         {
             var existingProduct = await _context.Products.Where(d => d.DeletedAt == null).FirstOrDefaultAsync(p => p.Name == productDto.Name);
 

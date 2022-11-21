@@ -14,7 +14,7 @@ namespace DAL.Repositories.ProductRepo
         Task<Product> GetProduct(int id);
 
 
-        Task<Product> CreateProduct(CreateProductDto productDto);
+        Task<Product> CreateProduct(CreateUpdateProductDto productDto);
 
         Task UpdateProduct();
 

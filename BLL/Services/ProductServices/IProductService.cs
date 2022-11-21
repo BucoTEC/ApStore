@@ -14,7 +14,7 @@ namespace BLL.Services.ProductServices
 
         Task<bool> DeleteProduct(int id);
 
-        Task<Product> CreateProduct(CreateProductDto productDto);
+        Task<Product> CreateProduct(CreateUpdateProductDto productDto);
 
 
     }

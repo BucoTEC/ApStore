@@ -53,7 +53,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Product>> CreateProduct(CreateProductDto productDto)
+        public async Task<ActionResult<Product>> CreateProduct(CreateUpdateProductDto productDto)
         {
             var createdProduct = await _productService.CreateProduct(productDto);
 

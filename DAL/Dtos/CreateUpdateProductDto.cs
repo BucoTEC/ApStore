@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Dtos
 {
-    public class CreateProductDto
+    public class CreateUpdateProductDto
     {
         [Required]
         [MinLength(3)]

@@ -40,7 +40,7 @@ namespace BLL.Services.ProductServices
             return DeleteProduct;
         }
 
-        public async Task<Product> CreateProduct(CreateProductDto productDto)
+        public async Task<Product> CreateProduct(CreateUpdateProductDto productDto)
         {
             var createdProduct = await _unitOfWork.Product.CreateProduct(productDto);
 
