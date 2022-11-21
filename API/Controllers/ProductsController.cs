@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BLL.Services.ProductServices;
+using DAL.Dtos;
 using DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -51,6 +52,13 @@ namespace API.Controllers
             return Ok(product);
         }
 
+        [HttpPost]
+        public async Task<ActionResult<Product>> CreateProduct(CreateProductDto productDto)
+        {
+            var createdProduct = await _productService.CreateProduct(productDto);
+
+            return Ok(createdProduct);
+        }
 
 
     }

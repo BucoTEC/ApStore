@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DAL.Data;
+using DAL.Dtos;
 using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,10 +17,7 @@ namespace DAL.Repositories.ProductRepo
             _context = context;
         }
 
-        public Task CreateProduct()
-        {
-            throw new NotImplementedException();
-        }
+
 
         public async Task<bool> DeleteProduct(int id)
         {
@@ -56,6 +54,39 @@ namespace DAL.Repositories.ProductRepo
         public Task UpdateProduct()
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<Product> CreateProduct(CreateProductDto productDto)
+        {
+            var existingProduct = await _context.Products.Where(d => d.DeletedAt == null).FirstOrDefaultAsync(p => p.Name == productDto.Name);
+
+            if (existingProduct != null)
+            {
+                throw new Exception("Product already exists");
+            }
+
+            var category = await _context.Products.FindAsync(productDto.CategoryId);
+
+            if (category == null)
+            {
+                throw new Exception("No valid category selected");
+
+            }
+
+            var newProduct = new Product()
+            {
+                Name = productDto.Name,
+                Description = productDto.Description,
+                Image = productDto.Image,
+                Price = productDto.Price,
+                AvailbleAmount = productDto.AvailbleAmount,
+                CategoryId = productDto.CategoryId
+
+            };
+
+            await _context.Products.AddAsync(newProduct);
+
+            return newProduct;
         }
     }
 }

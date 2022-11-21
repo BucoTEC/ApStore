@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DAL.Dtos;
 using DAL.Entities;
 using DAL.Repositories.ProductRepo;
 using DAL.UOW;
@@ -37,6 +38,15 @@ namespace BLL.Services.ProductServices
             }
 
             return DeleteProduct;
+        }
+
+        public async Task<Product> CreateProduct(CreateProductDto productDto)
+        {
+            var createdProduct = await _unitOfWork.Product.CreateProduct(productDto);
+
+            await _unitOfWork.CompleteAsync();
+
+            return createdProduct;
         }
     }
 }
