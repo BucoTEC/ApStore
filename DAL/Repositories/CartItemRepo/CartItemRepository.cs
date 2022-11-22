@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DAL.Data;
+using DAL.Dtos;
 using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,9 +17,26 @@ namespace DAL.Repositories.CartItemRepo
             _context = context;
         }
 
-        public Task<CartItem> CreateCartItem(object cartItmeDto)
+        public async Task<CartItem> CreateCartItem(CreateUpdateCartItemDto cartItemDto)
         {
-            throw new NotImplementedException();
+            var existingCartItem = await _context.CartItems.Where(c => c.ProductId == cartItemDto.ProductId).FirstOrDefaultAsync();
+
+            if (existingCartItem != null)
+            {
+                throw new Exception("cart item already exists");
+            }
+
+            var newCartItem = new CartItem()
+            {
+                Quantity = cartItemDto.Quantity,
+                Price = cartItemDto.Price,
+                ProductId = cartItemDto.ProductId,
+                AppUserId = cartItemDto.AppUserId
+            };
+
+            await _context.CartItems.AddAsync(newCartItem);
+
+            return newCartItem;
         }
 
         public async Task<bool> DeleteCartItem(int id)

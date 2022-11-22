@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DAL.Dtos;
 using DAL.Entities;
 
 namespace DAL.Repositories.CartItemRepo
@@ -16,7 +17,7 @@ namespace DAL.Repositories.CartItemRepo
         Task<CartItem> GetCartItem(int id);
 
 
-        Task<CartItem> CreateCartItem(object cartItmeDto);
+        Task<CartItem> CreateCartItem(CreateUpdateCartItemDto cartItmeDto);
 
         Task<CartItem> UpdateCartItem(object productDto, int productId);
 
