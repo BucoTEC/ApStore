@@ -10,9 +10,6 @@ namespace DAL.Dtos
     {
         public int Quantity { get; set; }
 
-        [Column(TypeName = "decimal(18,4)")]
-        public decimal Price { get; set; }
-
         public int ProductId { get; set; }
 
         public string AppUserId { get; set; } = null!;

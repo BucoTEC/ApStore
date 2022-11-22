@@ -29,7 +29,6 @@ namespace DAL.Repositories.CartItemRepo
             var newCartItem = new CartItem()
             {
                 Quantity = cartItemDto.Quantity,
-                Price = cartItemDto.Price,
                 ProductId = cartItemDto.ProductId,
                 AppUserId = cartItemDto.AppUserId
             };
@@ -89,9 +88,26 @@ namespace DAL.Repositories.CartItemRepo
 
         }
 
-        public Task<CartItem> UpdateCartItem(object productDto, int productId)
+        public async Task<CartItem> UpdateCartItem(CreateUpdateCartItemDto cartItemDto, int productId, string userId)
         {
-            throw new NotImplementedException();
+            var cartItem = await _context.CartItems.FindAsync(productId);
+
+            if (cartItem == null)
+            {
+                throw new Exception("No cart item with this id");
+            }
+
+            if (cartItem.AppUserId != userId)
+            {
+
+                throw new Exception("You are not owner of this cart item");
+            }
+
+            cartItem.Quantity = cartItemDto.Quantity;
+            cartItem.UpdatedAt = DateTime.Now;
+
+
+            return cartItem;
         }
     }
 }
