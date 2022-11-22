@@ -72,9 +72,16 @@ namespace DAL.Repositories.CartItemRepo
 
         }
 
-        public Task<CartItem> GetCartItem(int id)
+        public async Task<CartItem> GetCartItem(int id)
         {
-            throw new NotImplementedException();
+            var cartItem = await _context.CartItems.FindAsync(id);
+
+            if (cartItem == null)
+            {
+                throw new Exception("No cart item with this id");
+            }
+
+            return cartItem;
         }
 
         public async Task<List<CartItem>> GetCartItems()
