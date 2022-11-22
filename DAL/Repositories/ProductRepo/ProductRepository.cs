@@ -43,6 +43,7 @@ namespace DAL.Repositories.ProductRepo
 
         public async Task<Product> GetProduct(int id)
         {
+
             var product = await _context.Products.Where(d => d.DeletedAt == null).FirstOrDefaultAsync(p => p.ProductId == id);
 
             if (product != null)
@@ -55,6 +56,8 @@ namespace DAL.Repositories.ProductRepo
 
         public async Task<Product> CreateProduct(CreateUpdateProductDto productDto)
         {
+
+
             var existingProduct = await _context.Products.Where(d => d.DeletedAt == null).FirstOrDefaultAsync(p => p.Name == productDto.Name);
 
             if (existingProduct != null)

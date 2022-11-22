@@ -12,7 +12,7 @@ namespace API.Controllers
     public class ErrorHandlerController : ControllerBase
     {
         [ApiExplorerSettings(IgnoreApi = true)]
-        [HttpGet("/error")]
+        [Route("/error")]
         public IActionResult HandleError()
         {
             var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
