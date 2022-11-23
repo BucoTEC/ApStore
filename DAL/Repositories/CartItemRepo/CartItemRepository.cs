@@ -86,7 +86,7 @@ namespace DAL.Repositories.CartItemRepo
 
         public async Task<List<CartItem>> GetCartItems()
         {
-            return await _context.CartItems.ToListAsync();
+            return await _context.CartItems.Include(c => c.AppUser).ToListAsync();
         }
 
         public async Task<List<CartItem>> GetCartItemsByUser(string userId)

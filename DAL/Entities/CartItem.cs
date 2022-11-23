@@ -12,8 +12,10 @@ namespace DAL.Entities
 
         public int Quantity { get; set; }
 
-        [Column(TypeName = "decimal(18,4)")]
-        public decimal Price { get; set; }
+        // TODO test cart item without embedded price
+
+        // [Column(TypeName = "decimal(18,4)")]
+        // public decimal Price { get; set; }
 
         public int ProductId { get; set; }
 

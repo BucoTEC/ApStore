@@ -82,10 +82,10 @@ namespace DAL.Data
 
             // cart item seed
             modelBuilder.Entity<CartItem>().HasData(
-                   new CartItem() { CartItemId = 1, Quantity = 2, ProductId = 1, Price = 123.99M, AppUserId = CUSTOMER_ID },
-                   new CartItem() { CartItemId = 2, Quantity = 4, ProductId = 2, Price = 333.99M, AppUserId = CUSTOMER_ID },
-                   new CartItem() { CartItemId = 3, Quantity = 1, ProductId = 3, Price = 423.99M, AppUserId = CUSTOMER_ID },
-                   new CartItem() { CartItemId = 4, Quantity = 2, ProductId = 4, Price = 523.99M, AppUserId = CUSTOMER_ID }
+                   new CartItem() { CartItemId = 1, Quantity = 2, ProductId = 1, AppUserId = CUSTOMER_ID },
+                   new CartItem() { CartItemId = 2, Quantity = 4, ProductId = 2, AppUserId = CUSTOMER_ID },
+                   new CartItem() { CartItemId = 3, Quantity = 1, ProductId = 3, AppUserId = CUSTOMER_ID },
+                   new CartItem() { CartItemId = 4, Quantity = 2, ProductId = 4, AppUserId = CUSTOMER_ID }
 
             );
 
@@ -103,6 +103,8 @@ namespace DAL.Data
                    new Order() { OrderId = 2, Address = "Kemala Kapetanovica 13.", Country = "BiH", City = "Sarajevo", PhoneNumber = "062656323", ReceiverName = "Advan Bucalovic", Delivered = false, AppUserId = CUSTOMER_ID }
 
             );
+
+
         }
     }
 }
