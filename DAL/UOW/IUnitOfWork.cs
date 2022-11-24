@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using DAL.Repositories.AppUserRepo;
 using DAL.Repositories.AuthRepository;
 using DAL.Repositories.CartItemRepo;
+using DAL.Repositories.OrderItemRepo;
+using DAL.Repositories.OrderRepo;
 using DAL.Repositories.ProductRepo;
 
 namespace DAL.UOW
@@ -19,7 +21,9 @@ namespace DAL.UOW
 
         ICartItemRepository CartItem { get; }
 
+        IOrderRepository Order { get; }
 
+        IOrderItemRepository OrderItem { get; }
 
         Task CompleteAsync();
 

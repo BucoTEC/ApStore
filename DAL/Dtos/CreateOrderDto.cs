@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DAL.Entities
+namespace DAL.Dtos
 {
-    public class Order : EntityTimeStamp
+    public class CreateOrderDto
     {
         public int OrderId { get; set; }
         public string Address { get; set; } = null!;
@@ -19,12 +19,8 @@ namespace DAL.Entities
         public string ReceiverName { get; set; } = null!;
 
 
-        // public bool Delivered { get; set; }
+        public bool Delivered { get; set; }
 
-        public string AppUserId { get; set; } = null!;
-        public AppUser AppUser { get; set; } = null!;
-
-
-        public List<OrderItem>? OrderItems { get; set; }
+        public List<int> OrderItemsIds { get; set; } = null!;
     }
 }

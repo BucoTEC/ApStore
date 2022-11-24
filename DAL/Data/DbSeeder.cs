@@ -102,9 +102,10 @@ namespace DAL.Data
 
             );
 
+            //order seed
             modelBuilder.Entity<Order>().HasData(
-                   new Order() { OrderId = 1, Address = "Kemala Kapetanovica 13.", Country = "BiH", City = "Sarajevo", PhoneNumber = "062656323", ReceiverName = "Advan Bucalovic", Delivered = true, AppUserId = CUSTOMER_ID },
-                   new Order() { OrderId = 2, Address = "Kemala Kapetanovica 13.", Country = "BiH", City = "Sarajevo", PhoneNumber = "062656323", ReceiverName = "Advan Bucalovic", Delivered = false, AppUserId = CUSTOMER_ID }
+                   new Order() { OrderId = 1, Address = "Kemala Kapetanovica 13.", Country = "BiH", City = "Sarajevo", PhoneNumber = "062656323", ReceiverName = "Advan Bucalovic", AppUserId = CUSTOMER_ID },
+                   new Order() { OrderId = 2, Address = "Kemala Kapetanovica 13.", Country = "BiH", City = "Sarajevo", PhoneNumber = "062656323", ReceiverName = "Advan Bucalovic", AppUserId = CUSTOMER_ID }
 
             );
 
