@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using DAL.Dtos;
@@ -11,7 +12,7 @@ namespace DAL.Repositories.CartItemRepo
     {
         Task<List<CartItem>> GetCartItems();
 
-        Task<List<CartItem>> GetCartItemsByUser(string userId);
+        Task<List<CartItem>> GetCartItemsByUser(JwtSecurityToken decodedToken);
 
 
         Task<CartItem> GetCartItem(int id);

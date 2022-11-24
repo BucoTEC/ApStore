@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
@@ -19,17 +20,30 @@ namespace BLL.Services.CartItemServices
 
         public async Task<CartItem> CreateCartItem(CreateUpdateCartItemDto cartItemDto)
         {
-            return await _unitOfWork.CartItem.CreateCartItem(cartItemDto);
+            var cartItem = await _unitOfWork.CartItem.CreateCartItem(cartItemDto);
+
+            await _unitOfWork.CompleteAsync();
+
+            return cartItem;
         }
 
         public async Task<bool> DeleteCartItem(int id)
         {
-            return await _unitOfWork.CartItem.DeleteCartItem(id);
+            await _unitOfWork.CartItem.DeleteCartItem(id);
+
+            await _unitOfWork.CompleteAsync();
+
+            return true;
         }
 
         public async Task<bool> DeleteCartItemByUser(int id, string userId)
         {
-            return await _unitOfWork.CartItem.DeleteCartItemByUser(id, userId);
+            await _unitOfWork.CartItem.DeleteCartItemByUser(id, userId);
+
+            await _unitOfWork.CompleteAsync();
+
+            return true;
+
         }
 
         public async Task<CartItem> GetCartItem(int id)
@@ -42,14 +56,18 @@ namespace BLL.Services.CartItemServices
             return await _unitOfWork.CartItem.GetCartItems();
         }
 
-        public async Task<List<CartItem>> GetCartItemsByUser(string userId)
+        public async Task<List<CartItem>> GetCartItemsByUser(JwtSecurityToken decodedToken)
         {
-            return await _unitOfWork.CartItem.GetCartItemsByUser(userId);
+            return await _unitOfWork.CartItem.GetCartItemsByUser(decodedToken);
         }
 
         public async Task<CartItem> UpdateCartItem(CreateUpdateCartItemDto cartItemDto, int productId, string userId)
         {
-            return await _unitOfWork.CartItem.UpdateCartItem(cartItemDto, productId, userId);
+            var cartItem = await _unitOfWork.CartItem.UpdateCartItem(cartItemDto, productId, userId);
+
+            await _unitOfWork.CompleteAsync();
+
+            return cartItem;
         }
     }
 }

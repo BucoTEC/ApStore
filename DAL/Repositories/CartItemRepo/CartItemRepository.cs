@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using DAL.Data;
@@ -89,8 +90,9 @@ namespace DAL.Repositories.CartItemRepo
             return await _context.CartItems.Include(c => c.AppUser).ToListAsync();
         }
 
-        public async Task<List<CartItem>> GetCartItemsByUser(string userId)
+        public async Task<List<CartItem>> GetCartItemsByUser(JwtSecurityToken decodedToken)
         {
+            var userId = decodedToken.Claims.First(c => c.Type == "UserId").Value;
             return await _context.CartItems.Where(c => c.AppUserId == userId).ToListAsync();
 
         }

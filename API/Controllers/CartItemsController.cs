@@ -24,25 +24,29 @@ namespace API.Controllers
 
         [HttpGet("jwt-test")]
         [Authorize]
-        public async Task<JwtSecurityToken> JwtTest()
+        public async Task<string> JwtTest()
         {
             var token = await HttpContext.GetTokenAsync("access_token");
 
             var handler = new JwtSecurityTokenHandler();
-            var dec = handler.ReadJwtToken(token);
 
-            return dec;
+            var decodedToken = handler.ReadJwtToken(token);
+
+            return decodedToken.Claims.First(c => c.Type == "UserId").Value;
         }
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<List<CartItem>>> GetCartItems()
         {
             var cartItems = await _cartItemService.GetCartItems();
 
             return Ok(cartItems);
         }
+
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<CartItem>> GetCartItem([FromRoute] int id)
         {
             var cartItems = await _cartItemService.GetCartItem(id);
@@ -51,10 +55,20 @@ namespace API.Controllers
         }
 
 
-        [HttpGet("by-user/{id}")]
-        public async Task<ActionResult<CartItem>> GetCartItemsByUser([FromRoute] string userId)
+        [HttpGet("by-user")]
+        [Authorize]
+        public async Task<ActionResult<CartItem>> GetCartItemsByUser()
         {
-            var cartItems = await _cartItemService.GetCartItemsByUser(userId);
+
+
+
+            var token = await HttpContext.GetTokenAsync("access_token");
+
+            var handler = new JwtSecurityTokenHandler();
+
+            var decodedToken = handler.ReadJwtToken(token);
+
+            var cartItems = await _cartItemService.GetCartItemsByUser(decodedToken);
 
             return Ok(cartItems);
         }

@@ -60,6 +60,7 @@ namespace DAL.Repositories.AuthRepository
             // todo refactor role checker
             var authClaims = new List<Claim>
             {
+                new Claim("UserId", user.Id),
                 new Claim(ClaimTypes.Name, signInModel.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.Role, user.AppUserRoleId == 1 ? "Admin" : "Customer")

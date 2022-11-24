@@ -53,12 +53,14 @@ namespace DAL.Data
                 FirstName = "Adnan",
                 LastName = "Bucalovic",
                 UserName = "adnan@gmail.com",
+                NormalizedEmail = "ADNAN@GMAIL.COM",
+                NormalizedUserName = "ADNAN@GMAIL.COM",
                 AppUserRoleId = 2
             };
 
             //set user password
             PasswordHasher<AppUser> ph = new PasswordHasher<AppUser>();
-            appUser.PasswordHash = ph.HashPassword(appUser, "string");
+            appUser.PasswordHash = ph.HashPassword(appUser, "0401");
 
             //seed admin user
             modelBuilder.Entity<AppUser>().HasData(appUser);
@@ -71,11 +73,13 @@ namespace DAL.Data
                 FirstName = "Advan",
                 LastName = "Bucalovic",
                 UserName = "advan@gmail.com",
+                NormalizedEmail = "ADVAN@GMAIL.COM",
+                NormalizedUserName = "ADVAN@GMAIL.COM",
                 AppUserRoleId = 1
             };
 
             //set user password
-            appCustomer.PasswordHash = ph.HashPassword(appCustomer, "string");
+            appCustomer.PasswordHash = ph.HashPassword(appCustomer, "0309");
 
             //seed customer user
             modelBuilder.Entity<AppUser>().HasData(appCustomer);
