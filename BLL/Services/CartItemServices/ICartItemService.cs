@@ -18,7 +18,7 @@ namespace BLL.Services.CartItemServices
         Task<CartItem> GetCartItem(int id);
 
 
-        Task<CartItem> CreateCartItem(CreateUpdateCartItemDto cartItemDto);
+        Task<CartItem> CreateCartItem(CreateUpdateCartItemDto cartItemDto, string token);
 
         Task<CartItem> UpdateCartItem(CreateUpdateCartItemDto cartItemDto, int productId, string userId);
 

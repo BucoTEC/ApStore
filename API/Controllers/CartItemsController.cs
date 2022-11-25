@@ -63,9 +63,17 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<CartItem>> CreateCartItem(CreateUpdateCartItemDto cartItemDto)
         {
-            var cartItem = await _cartItemService.CreateCartItem(cartItemDto);
+
+            var token = await HttpContext.GetTokenAsync("access_token");
+
+            if (token == null)
+            {
+                throw new Exception("No token provided");
+            }
+            var cartItem = await _cartItemService.CreateCartItem(cartItemDto, token);
 
             return Ok(cartItem);
         }

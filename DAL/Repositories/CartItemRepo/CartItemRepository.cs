@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using DAL.Data;
 using DAL.Dtos;
@@ -18,7 +19,7 @@ namespace DAL.Repositories.CartItemRepo
             _context = context;
         }
 
-        public async Task<CartItem> CreateCartItem(CreateUpdateCartItemDto cartItemDto)
+        public async Task<CartItem> CreateCartItem(CreateUpdateCartItemDto cartItemDto, string userId)
         {
             var existingCartItem = await _context.CartItems.Where(c => c.ProductId == cartItemDto.ProductId).FirstOrDefaultAsync();
 
@@ -31,7 +32,7 @@ namespace DAL.Repositories.CartItemRepo
             {
                 Quantity = cartItemDto.Quantity,
                 ProductId = cartItemDto.ProductId,
-                AppUserId = cartItemDto.AppUserId
+                AppUserId = userId
             };
 
             await _context.CartItems.AddAsync(newCartItem);
@@ -85,9 +86,16 @@ namespace DAL.Repositories.CartItemRepo
             return cartItem;
         }
 
-        public async Task<List<CartItem>> GetCartItems()
+        public async Task<List<CartItem>> GetCartItems(Expression<Func<CartItem, bool>>? expression = null)
         {
-            return await _context.CartItems.ToListAsync();
+            IQueryable<CartItem> query = _context.Set<CartItem>();
+
+            if (expression != null)
+            {
+                query = query.Where(expression);
+            }
+
+            return await query.ToListAsync();
         }
 
         public async Task<List<CartItem>> GetCartItemsByUser(string userId)

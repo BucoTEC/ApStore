@@ -21,9 +21,31 @@ namespace BLL.Services.CartItemServices
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<CartItem> CreateCartItem(CreateUpdateCartItemDto cartItemDto)
+        public async Task<CartItem> CreateCartItem(CreateUpdateCartItemDto cartItemDto, string token)
         {
-            var cartItem = await _unitOfWork.CartItem.CreateCartItem(cartItemDto);
+            var product = await _unitOfWork.Product.GetProduct(cartItemDto.ProductId);
+
+            if (product == null)
+            {
+                throw new Exception("No product with this id");
+            }
+
+            var cartItems = await _unitOfWork.CartItem.GetCartItems(x => x.ProductId == product.ProductId);
+
+            if (cartItems != null)
+            {
+                throw new Exception("Cart item with this product already exists");
+            }
+
+
+            if (product.AvailbleAmount > cartItemDto.Quantity)
+            {
+                throw new Exception("Selected more products then availble");
+            }
+
+            var userId = _jwtHandler.DecodeToken(token).UserId;
+
+            var cartItem = await _unitOfWork.CartItem.CreateCartItem(cartItemDto, userId);
 
             await _unitOfWork.CompleteAsync();
 

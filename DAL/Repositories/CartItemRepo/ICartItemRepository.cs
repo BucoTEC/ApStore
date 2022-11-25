@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using DAL.Dtos;
 using DAL.Entities;
@@ -10,7 +11,7 @@ namespace DAL.Repositories.CartItemRepo
 {
     public interface ICartItemRepository
     {
-        Task<List<CartItem>> GetCartItems();
+        Task<List<CartItem>> GetCartItems(Expression<Func<CartItem, bool>>? expression = null);
 
         Task<List<CartItem>> GetCartItemsByUser(string userId);
 
@@ -18,7 +19,7 @@ namespace DAL.Repositories.CartItemRepo
         Task<CartItem> GetCartItem(int id);
 
 
-        Task<CartItem> CreateCartItem(CreateUpdateCartItemDto cartItemDto);
+        Task<CartItem> CreateCartItem(CreateUpdateCartItemDto cartItemDto, string userId);
 
         Task<CartItem> UpdateCartItem(CreateUpdateCartItemDto cartItemDto, int productId, string userId);
 
