@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
+using BLL.Utils;
 using DAL.Dtos;
 using DAL.Entities;
 using DAL.UOW;
@@ -13,8 +14,10 @@ namespace BLL.Services.CartItemServices
     public class CartItemService : ICartItemService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public CartItemService(IUnitOfWork unitOfWork)
+        private readonly IJwtHandler _jwtHandler;
+        public CartItemService(IUnitOfWork unitOfWork, IJwtHandler jwtHandler)
         {
+            _jwtHandler = jwtHandler;
             _unitOfWork = unitOfWork;
         }
 
@@ -56,9 +59,11 @@ namespace BLL.Services.CartItemServices
             return await _unitOfWork.CartItem.GetCartItems();
         }
 
-        public async Task<List<CartItem>> GetCartItemsByUser(JwtSecurityToken decodedToken)
+        public async Task<List<CartItem>> GetCartItemsByUser(string token)
         {
-            return await _unitOfWork.CartItem.GetCartItemsByUser(decodedToken);
+            var userId = _jwtHandler.DecodeToken(token).UserId;
+            Console.WriteLine(userId);
+            return await _unitOfWork.CartItem.GetCartItemsByUser(userId);
         }
 
         public async Task<CartItem> UpdateCartItem(CreateUpdateCartItemDto cartItemDto, int productId, string userId)

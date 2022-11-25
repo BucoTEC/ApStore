@@ -11,7 +11,7 @@ namespace BLL.Utils
 
         string GenerateJwtToken(AppUser user);
 
-        object DecodeToken(string token);
+        DecodedToken DecodeToken(string token);
 
     }
 }

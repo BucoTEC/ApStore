@@ -22,18 +22,7 @@ namespace API.Controllers
             _cartItemService = cartItemService;
         }
 
-        [HttpGet("jwt-test")]
-        [Authorize]
-        public async Task<string> JwtTest()
-        {
-            var token = await HttpContext.GetTokenAsync("access_token");
 
-            var handler = new JwtSecurityTokenHandler();
-
-            var decodedToken = handler.ReadJwtToken(token);
-
-            return decodedToken.Claims.First(c => c.Type == "UserId").Value;
-        }
 
 
         [HttpGet]
@@ -64,11 +53,11 @@ namespace API.Controllers
 
             var token = await HttpContext.GetTokenAsync("access_token");
 
-            var handler = new JwtSecurityTokenHandler();
-
-            var decodedToken = handler.ReadJwtToken(token);
-
-            var cartItems = await _cartItemService.GetCartItemsByUser(decodedToken);
+            if (token == null)
+            {
+                throw new Exception("No token provided");
+            }
+            var cartItems = await _cartItemService.GetCartItemsByUser(token);
 
             return Ok(cartItems);
         }

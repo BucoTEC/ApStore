@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace BLL.Utils
 {
+
     public class JwtHandler : IJwtHandler
     {
         private readonly IConfiguration _configuration;
@@ -45,24 +46,38 @@ namespace BLL.Utils
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public object DecodeToken(string token)
+        public DecodedToken DecodeToken(string token)
         {
             var handler = new JwtSecurityTokenHandler();
 
             var decodedToken = handler.ReadJwtToken(token);
 
             var userId = decodedToken.Claims.First(c => c.Type == "UserId").Value;
-            var userEmail = decodedToken.Claims.First(c => c.Type == "Name").Value;
-            var userRole = decodedToken.Claims.First(c => c.Type == "Role").Value;
+            var userEmail = decodedToken.Claims.First(c => c.Type == ClaimTypes.Name).Value;
+            var userRole = decodedToken.Claims.First(c => c.Type == ClaimTypes.Role).Value;
 
 
 
-            return new
+            return new DecodedToken()
             {
-                userId,
-                userEmail,
-                userRole
+                UserId = userId,
+                UserEmail = userEmail,
+                UserRole = userRole
             };
         }
+
+
     }
+
+
+
+    public class DecodedToken
+    {
+        public string UserId { get; set; } = null!;
+        public string UserEmail { get; set; } = null!;
+        public string UserRole { get; set; } = null!;
+
+
+    }
+
 }

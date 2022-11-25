@@ -12,7 +12,7 @@ namespace DAL.Repositories.CartItemRepo
     {
         Task<List<CartItem>> GetCartItems();
 
-        Task<List<CartItem>> GetCartItemsByUser(JwtSecurityToken decodedToken);
+        Task<List<CartItem>> GetCartItemsByUser(string userId);
 
 
         Task<CartItem> GetCartItem(int id);

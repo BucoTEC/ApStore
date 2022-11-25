@@ -87,14 +87,12 @@ namespace DAL.Repositories.CartItemRepo
 
         public async Task<List<CartItem>> GetCartItems()
         {
-            return await _context.CartItems.Include(c => c.AppUser).ToListAsync();
+            return await _context.CartItems.ToListAsync();
         }
 
-        public async Task<List<CartItem>> GetCartItemsByUser(JwtSecurityToken decodedToken)
+        public async Task<List<CartItem>> GetCartItemsByUser(string userId)
         {
-            var userId = decodedToken.Claims.First(c => c.Type == "UserId").Value;
             return await _context.CartItems.Where(c => c.AppUserId == userId).ToListAsync();
-
         }
 
         public async Task<CartItem> UpdateCartItem(CreateUpdateCartItemDto cartItemDto, int productId, string userId)

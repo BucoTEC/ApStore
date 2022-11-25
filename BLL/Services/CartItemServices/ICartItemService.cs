@@ -12,7 +12,7 @@ namespace BLL.Services.CartItemServices
     {
         Task<List<CartItem>> GetCartItems();
 
-        Task<List<CartItem>> GetCartItemsByUser(JwtSecurityToken decodedToken);
+        Task<List<CartItem>> GetCartItemsByUser(string token);
 
 
         Task<CartItem> GetCartItem(int id);
