@@ -19,9 +19,18 @@ namespace BLL.Services.OrderServices
             _unitOfWork = unitOfWork;
         }
 
-        public Task<Order> CreateOrder(CreateOrderDto createOrderDto, string? token)
+        public async Task<Order> CreateOrder(CreateOrderDto createOrderDto, string token)
         {
-            throw new NotImplementedException();
+
+            // TODO add create order items on create order
+
+            var userId = _jwtHandler.DecodeToken(token).UserId;
+
+            var newOrder = await _unitOfWork.Order.CreateOrder(createOrderDto, userId);
+
+            await _unitOfWork.CompleteAsync();
+
+            return newOrder;
         }
 
         public async Task<List<Order>> GetAllOrders()

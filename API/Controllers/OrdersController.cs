@@ -69,9 +69,10 @@ namespace API.Controllers
         {
             var token = await HttpContext.GetTokenAsync("access_token");
 
-            var handler = new JwtSecurityTokenHandler();
-
-            var decodedToken = handler.ReadJwtToken(token);
+            if (token == null)
+            {
+                throw new Exception("No token provided");
+            }
 
             var createdOrder = await _service.CreateOrder(createOrderDto, token);
 
