@@ -50,6 +50,7 @@ namespace API.Controllers
         {
 
 
+            // TODO add get cart items by user that were selected 
 
             var token = await HttpContext.GetTokenAsync("access_token");
 
@@ -63,7 +64,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Customer")]
         public async Task<ActionResult<CartItem>> CreateCartItem(CreateUpdateCartItemDto cartItemDto)
         {
 
@@ -79,17 +80,41 @@ namespace API.Controllers
         }
 
         [HttpPatch("{productId}")]
-        public async Task<ActionResult<CartItem>> UpdateCartItem([FromBody] CreateUpdateCartItemDto cartItemDto, [FromRoute] int productId, string userId)
+        [Authorize]
+        public async Task<ActionResult<CartItem>> UpdateCartItem([FromBody] CreateUpdateCartItemDto cartItemDto, [FromRoute] int productId)
         {
-            var cartItem = await _cartItemService.UpdateCartItem(cartItemDto, productId, userId);
+            var token = await HttpContext.GetTokenAsync("access_token");
+
+            if (token == null)
+            {
+                throw new Exception("No token provided");
+            }
+
+            var cartItem = await _cartItemService.UpdateCartItem(cartItemDto, productId, token);
 
             return Ok(cartItem);
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<bool>> DeleteCartItem(int id)
         {
             var cartItem = await _cartItemService.DeleteCartItem(id);
+
+            return Ok(cartItem);
+        }
+
+        [HttpDelete("by-user/{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<bool>> DeleteCartItemByUser(int id)
+        {
+            var token = await HttpContext.GetTokenAsync("access_token");
+
+            if (token == null)
+            {
+                throw new Exception("No token provided");
+            }
+            var cartItem = await _cartItemService.DeleteCartItemByUser(id, token);
 
             return Ok(cartItem);
         }

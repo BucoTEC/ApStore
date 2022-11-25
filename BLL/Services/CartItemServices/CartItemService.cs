@@ -61,8 +61,10 @@ namespace BLL.Services.CartItemServices
             return true;
         }
 
-        public async Task<bool> DeleteCartItemByUser(int id, string userId)
+        public async Task<bool> DeleteCartItemByUser(int id, string token)
         {
+            var userId = _jwtHandler.DecodeToken(token).UserId;
+
             await _unitOfWork.CartItem.DeleteCartItemByUser(id, userId);
 
             await _unitOfWork.CompleteAsync();
@@ -84,12 +86,14 @@ namespace BLL.Services.CartItemServices
         public async Task<List<CartItem>> GetCartItemsByUser(string token)
         {
             var userId = _jwtHandler.DecodeToken(token).UserId;
-            Console.WriteLine(userId);
+
             return await _unitOfWork.CartItem.GetCartItemsByUser(userId);
         }
 
-        public async Task<CartItem> UpdateCartItem(CreateUpdateCartItemDto cartItemDto, int productId, string userId)
+        public async Task<CartItem> UpdateCartItem(CreateUpdateCartItemDto cartItemDto, int productId, string token)
         {
+            var userId = _jwtHandler.DecodeToken(token).UserId;
+
             var cartItem = await _unitOfWork.CartItem.UpdateCartItem(cartItemDto, productId, userId);
 
             await _unitOfWork.CompleteAsync();

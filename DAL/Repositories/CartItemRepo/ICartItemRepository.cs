@@ -25,7 +25,7 @@ namespace DAL.Repositories.CartItemRepo
 
         Task<bool> DeleteCartItem(int id);
 
-        Task<bool> DeleteCartItemByUser(int id, string userId);
+        Task<bool> DeleteCartItemByUser(int id, string token);
 
     }
 }

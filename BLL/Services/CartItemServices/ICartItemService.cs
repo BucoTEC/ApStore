@@ -20,10 +20,10 @@ namespace BLL.Services.CartItemServices
 
         Task<CartItem> CreateCartItem(CreateUpdateCartItemDto cartItemDto, string token);
 
-        Task<CartItem> UpdateCartItem(CreateUpdateCartItemDto cartItemDto, int productId, string userId);
+        Task<CartItem> UpdateCartItem(CreateUpdateCartItemDto cartItemDto, int productId, string token);
 
         Task<bool> DeleteCartItem(int id);
 
-        Task<bool> DeleteCartItemByUser(int id, string userId);
+        Task<bool> DeleteCartItemByUser(int id, string token);
     }
 }

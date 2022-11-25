@@ -16,6 +16,5 @@ namespace DAL.Dtos
         [Required]
         public int ProductId { get; set; }
 
-
     }
 }
