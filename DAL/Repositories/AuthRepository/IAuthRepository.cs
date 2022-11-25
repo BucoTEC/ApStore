@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DAL.Dtos;
+using DAL.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace DAL.Repositories.AuthRepository
@@ -11,6 +12,6 @@ namespace DAL.Repositories.AuthRepository
     {
         Task<IdentityResult> Signup(SignUpModel data);
 
-        Task<string> Login(SignInModel signInModel);
+        Task<AppUser> Login(SignInModel signInModel);
     }
 }

@@ -2,18 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BLL.Utils;
 using DAL.Dtos;
 using DAL.Repositories.AuthRepository;
 using DAL.UOW;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 
 namespace BLL.Services.Auth
 {
     public class AuthService : IAuthService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public AuthService(IUnitOfWork unitOfWork)
+        private readonly IJwtHandler _jwtHandler;
+        public AuthService(IUnitOfWork unitOfWork, IJwtHandler jwtHandler)
         {
+            _jwtHandler = jwtHandler;
             _unitOfWork = unitOfWork;
         }
 
@@ -27,7 +31,9 @@ namespace BLL.Services.Auth
         public async Task<string> Login(SignInModel data)
         {
 
-            return await _unitOfWork.Auth.Login(data);
+            var user = await _unitOfWork.Auth.Login(data);
+
+            return _jwtHandler.GenerateJwtToken(user);
         }
 
     }

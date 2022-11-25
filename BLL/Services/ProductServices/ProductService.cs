@@ -44,13 +44,22 @@ namespace BLL.Services.ProductServices
         {
             var createdProduct = await _unitOfWork.Product.CreateProduct(productDto);
 
-            await _unitOfWork.CompleteAsync();
+            if (createdProduct != null)
+            {
 
-            return createdProduct;
+                await _unitOfWork.CompleteAsync();
+                return createdProduct;
+            }
+
+            _unitOfWork.Dispose();
+
+            throw new Exception("Something went wrong");
+
         }
 
         public async Task<Product> UpdateProduct(CreateUpdateProductDto productDto, int productId)
         {
+            // TODO move existing category check to service
             var updatedProduct = await _unitOfWork.Product.UpdateProduct(productDto, productId);
 
             await _unitOfWork.CompleteAsync();

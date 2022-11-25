@@ -4,6 +4,7 @@ using BLL.Services.Auth;
 using BLL.Services.CartItemServices;
 using BLL.Services.OrderServices;
 using BLL.Services.ProductServices;
+using BLL.Utils;
 using DAL.Data;
 using DAL.Entities;
 using DAL.Repositories.AppUserRepo;
@@ -34,6 +35,9 @@ builder.Services.AddScoped<IAppUserService, AppUserService>();
 builder.Services.AddScoped<ICartItemService, CartItemService>();
 
 builder.Services.AddScoped<IOrderService, OrderService>();
+
+builder.Services.AddScoped<IJwtHandler, JwtHandler>();
+
 
 
 

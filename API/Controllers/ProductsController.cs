@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BLL.Services.ProductServices;
 using DAL.Dtos;
 using DAL.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -28,6 +29,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<bool>> DeleteProduct(int id)
 
         {
@@ -53,6 +55,8 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
+
         public async Task<ActionResult<Product>> CreateProduct(CreateUpdateProductDto productDto)
         {
             var createdProduct = await _productService.CreateProduct(productDto);
@@ -61,6 +65,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Product>> UpdateProduct([FromBody] CreateUpdateProductDto productDto, [FromRoute] int id)
 
         {
