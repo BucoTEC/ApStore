@@ -35,7 +35,14 @@ namespace API.Controllers
         [Authorize]
         public async Task<ActionResult<Order>> GetSingleOrder([FromRoute] int id)
         {
-            var order = await _service.GetSingleOrder(id);
+            var token = await HttpContext.GetTokenAsync("access_token");
+
+            if (token == null)
+            {
+                throw new Exception("No token provided");
+            }
+
+            var order = await _service.GetSingleOrder(id, token);
 
             return order;
         }

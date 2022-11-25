@@ -14,7 +14,7 @@ namespace BLL.Services.OrderServices
 
 
 
-        Task<Order> GetSingleOrder(int id);
+        Task<Order> GetSingleOrder(int id, string token);
 
 
 

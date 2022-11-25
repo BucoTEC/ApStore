@@ -36,9 +36,17 @@ namespace BLL.Services.OrderServices
             return await _unitOfWork.Order.GetOrdersByUser(userId);
         }
 
-        public Task<Order> GetSingleOrder(int id)
+        public async Task<Order> GetSingleOrder(int id, string token)
         {
-            throw new NotImplementedException();
+            var order = await _unitOfWork.Order.GetSingleOrder(id);
+            var decodedToken = _jwtHandler.DecodeToken(token);
+
+            if (order.AppUserId != decodedToken.UserId || decodedToken.UserRole != "Admin")
+            {
+                throw new Exception("You are not allowed to view this order");
+            }
+
+            return order;
         }
     }
 }
