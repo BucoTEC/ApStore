@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BLL.Utils;
 using DAL.Dtos;
 using DAL.Entities;
 using DAL.UOW;
@@ -11,8 +12,10 @@ namespace BLL.Services.OrderServices
     public class OrderService : IOrderService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public OrderService(IUnitOfWork unitOfWork)
+        private readonly IJwtHandler _jwtHandler;
+        public OrderService(IUnitOfWork unitOfWork, IJwtHandler jwtHandler)
         {
+            _jwtHandler = jwtHandler;
             _unitOfWork = unitOfWork;
         }
 
@@ -26,9 +29,11 @@ namespace BLL.Services.OrderServices
             return await _unitOfWork.Order.GetAllOrders();
         }
 
-        public async Task<List<Order>> GetOrdersByUser(string? token)
+        public async Task<List<Order>> GetOrdersByUser(string token)
         {
-            return await _unitOfWork.Order.GetOrdersByUser(token);
+            var userId = _jwtHandler.DecodeToken(token).UserId;
+
+            return await _unitOfWork.Order.GetOrdersByUser(userId);
         }
 
         public Task<Order> GetSingleOrder(int id)

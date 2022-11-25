@@ -23,6 +23,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<List<Order>>> GetAllOrders()
         {
             var orders = await _service.GetAllOrders();
@@ -31,6 +32,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Order>> GetSingleOrder([FromRoute] int id)
         {
             var order = await _service.GetSingleOrder(id);
@@ -44,9 +46,10 @@ namespace API.Controllers
         {
             var token = await HttpContext.GetTokenAsync("access_token");
 
-            var handler = new JwtSecurityTokenHandler();
-
-            var decodedToken = handler.ReadJwtToken(token);
+            if (token == null)
+            {
+                throw new Exception("No token provided");
+            }
 
             var orders = await _service.GetOrdersByUser(token);
 
