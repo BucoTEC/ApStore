@@ -22,7 +22,6 @@ namespace BLL.Services.OrderServices
         public async Task<Order> CreateOrder(CreateOrderDto createOrderDto, string token)
         {
 
-            // TODO add create order items on create order
 
             var userId = _jwtHandler.DecodeToken(token).UserId;
 
