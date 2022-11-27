@@ -37,6 +37,14 @@ namespace DAL.Repositories.OrderRepo
             return newOrder;
         }
 
+        public async void CreateOrderItem(OrderItem orderItem)
+        {
+
+
+            var newOrderItem = await _context.OrderItems.AddAsync(orderItem);
+
+        }
+
         public async Task<List<Order>> GetAllOrders()
         {
             return await _context.Orders.ToListAsync();

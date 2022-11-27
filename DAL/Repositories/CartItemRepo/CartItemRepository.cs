@@ -100,7 +100,7 @@ namespace DAL.Repositories.CartItemRepo
 
         public async Task<List<CartItem>> GetCartItemsByUser(string userId)
         {
-            return await _context.CartItems.Where(c => c.AppUserId == userId).ToListAsync();
+            return await _context.CartItems.Where(c => c.AppUserId == userId).Include(p => p.Product).ToListAsync();
         }
 
         public async Task<CartItem> UpdateCartItem(CreateUpdateCartItemDto cartItemDto, int productId, string userId)

@@ -28,6 +28,39 @@ namespace BLL.Services.OrderServices
 
             var newOrder = await _unitOfWork.Order.CreateOrder(createOrderDto, userId);
 
+
+            var cartItems = await _unitOfWork.CartItem.GetCartItemsByUser(userId);
+
+            if (cartItems.Count < 1)
+            {
+                throw new Exception("No cart items for this user");
+            }
+            else
+            {
+                foreach (var cartItem in cartItems)
+                {
+                    if (cartItem.Quantity > cartItem.Product.AvailbleAmount)
+                    {
+                        _unitOfWork.Dispose();
+
+                        throw new Exception("The amount of selected product is over the availble amount");
+                    }
+
+                    var newOrderItem = new OrderItem()
+                    {
+                        ProductId = cartItem.ProductId,
+                        Price = cartItem.Product.Price,
+                        ShippingPrice = cartItem.Product.ShippingPrice,
+                        Quantity = cartItem.Quantity,
+                        Name = cartItem.Product.Name,
+                        OrderId = newOrder.OrderId
+
+                    };
+
+                    _unitOfWork.Order.CreateOrderItem(newOrderItem);
+                }
+            }
+
             await _unitOfWork.CompleteAsync();
 
             return newOrder;
