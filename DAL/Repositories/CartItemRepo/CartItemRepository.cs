@@ -54,7 +54,7 @@ namespace DAL.Repositories.CartItemRepo
 
         public async Task<bool> DeleteCartItemByUser(int id, string userId)
         {
-
+            // TODO move to BLL layer logic for sorting user ownership of cart item
             var cartItem = await _context.CartItems.FindAsync(id);
 
             if (cartItem == null)

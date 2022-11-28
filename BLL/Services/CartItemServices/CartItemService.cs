@@ -97,7 +97,21 @@ namespace BLL.Services.CartItemServices
 
         public async Task<CartItem> UpdateCartItem(CreateUpdateCartItemDto cartItemDto, int productId, string token)
         {
+            var product = await _unitOfWork.Product.GetProduct(cartItemDto.ProductId);
+
+            if (product == null)
+            {
+                throw new Exception("No product with this id");
+            }
+
+
+            if (product.AvailbleAmount < cartItemDto.Quantity)
+            {
+                throw new Exception("Selected quantity is larger than avalible amount");
+            }
+
             var userId = _jwtHandler.DecodeToken(token).UserId;
+
 
             var cartItem = await _unitOfWork.CartItem.UpdateCartItem(cartItemDto, productId, userId);
 
