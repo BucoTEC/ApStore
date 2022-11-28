@@ -79,9 +79,9 @@ namespace API.Controllers
             return Ok(cartItem);
         }
 
-        [HttpPatch("{productId}")]
+        [HttpPatch("{cartItemId}")]
         [Authorize]
-        public async Task<ActionResult<CartItem>> UpdateCartItem([FromBody] CreateUpdateCartItemDto cartItemDto, [FromRoute] int productId)
+        public async Task<ActionResult<CartItem>> UpdateCartItem([FromBody] CreateUpdateCartItemDto cartItemDto, [FromRoute] int cartItemId)
         {
             var token = await HttpContext.GetTokenAsync("access_token");
 
@@ -90,7 +90,7 @@ namespace API.Controllers
                 throw new Exception("No token provided");
             }
 
-            var cartItem = await _cartItemService.UpdateCartItem(cartItemDto, productId, token);
+            var cartItem = await _cartItemService.UpdateCartItem(cartItemDto, cartItemId, token);
 
             return Ok(cartItem);
         }
