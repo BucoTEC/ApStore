@@ -7,7 +7,6 @@ namespace DAL.Dtos
 {
     public class CreateOrderDto
     {
-        public int OrderId { get; set; }
         public string Address { get; set; } = null!;
 
         public string City { get; set; } = null!;
@@ -19,8 +18,7 @@ namespace DAL.Dtos
         public string ReceiverName { get; set; } = null!;
 
 
-        public bool Delivered { get; set; }
+        // public bool Delivered { get; set; }
 
-        public List<int> OrderItemsIds { get; set; } = null!;
     }
 }

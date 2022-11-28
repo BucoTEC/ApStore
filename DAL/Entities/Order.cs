@@ -28,3 +28,5 @@ namespace DAL.Entities
         public List<OrderItem>? OrderItems { get; set; }
     }
 }
+
+// TODO add is delivered update option
