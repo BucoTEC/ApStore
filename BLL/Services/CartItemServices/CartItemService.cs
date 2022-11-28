@@ -32,7 +32,8 @@ namespace BLL.Services.CartItemServices
 
             var cartItems = await _unitOfWork.CartItem.GetCartItems(x => x.ProductId == product.ProductId);
 
-            if (cartItems != null)
+
+            if (cartItems.Count > 0)
             {
                 throw new Exception("Cart item with this product already exists");
             }
