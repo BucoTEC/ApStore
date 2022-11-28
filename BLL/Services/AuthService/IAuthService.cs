@@ -10,7 +10,7 @@ namespace BLL.Services.Auth
     public interface IAuthService
     {
         Task<IdentityResult> Signup(SignUpModel data);
-        Task<string> Login(SignInModel data);
+        Task<LoginResDto> Login(SignInModel data);
 
     }
 }

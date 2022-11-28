@@ -37,11 +37,6 @@ namespace API.Controllers
         {
             var result = await _authService.Login(signInModel);
 
-            if (string.IsNullOrEmpty(result))
-            {
-                return Unauthorized();
-            }
-
             return Ok(result);
         }
     }

@@ -28,12 +28,18 @@ namespace BLL.Services.Auth
             return await _unitOfWork.Auth.Signup(data);
         }
 
-        public async Task<string> Login(SignInModel data)
+        public async Task<LoginResDto> Login(SignInModel data)
         {
 
             var user = await _unitOfWork.Auth.Login(data);
 
-            return _jwtHandler.GenerateJwtToken(user);
+            if (user == null)
+            {
+                throw new Exception("unauthorized");
+            }
+
+            var token = _jwtHandler.GenerateJwtToken(user);
+            return new LoginResDto() { Token = token, Role = user.AppUserRoleId };
         }
 
     }
