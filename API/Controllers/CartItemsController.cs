@@ -105,7 +105,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("by-user/{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Customer")]
         public async Task<ActionResult<bool>> DeleteCartItemByUser(int id)
         {
             var token = await HttpContext.GetTokenAsync("access_token");
