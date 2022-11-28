@@ -43,11 +43,6 @@ namespace BLL.Services.CartItemServices
             }
 
 
-            if (product.AvailbleAmount > cartItemDto.Quantity)
-            {
-                throw new Exception("Selected more products then availble");
-            }
-
             var userId = _jwtHandler.DecodeToken(token).UserId;
 
             var cartItem = await _unitOfWork.CartItem.CreateCartItem(cartItemDto, userId);
