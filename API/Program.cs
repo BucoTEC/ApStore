@@ -139,6 +139,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
+
 app.UseExceptionHandler("/error");
 
 app.UseHttpsRedirection();
