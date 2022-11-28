@@ -16,5 +16,9 @@ namespace DAL.Dtos
         [Required]
         public int ProductId { get; set; }
 
+        public Boolean IsSelected { get; set; } = false;
+
     }
 }
+
+// TODO separate create and update cart item dtos

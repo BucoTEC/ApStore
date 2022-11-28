@@ -65,6 +65,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Order>> CreateOrder([FromBody] CreateOrderDto createOrderDto)
         {
             var token = await HttpContext.GetTokenAsync("access_token");

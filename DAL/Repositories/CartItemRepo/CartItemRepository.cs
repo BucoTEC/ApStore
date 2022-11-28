@@ -32,7 +32,8 @@ namespace DAL.Repositories.CartItemRepo
             {
                 Quantity = cartItemDto.Quantity,
                 ProductId = cartItemDto.ProductId,
-                AppUserId = userId
+                AppUserId = userId,
+
             };
 
             await _context.CartItems.AddAsync(newCartItem);
@@ -120,6 +121,7 @@ namespace DAL.Repositories.CartItemRepo
 
             cartItem.Quantity = cartItemDto.Quantity;
             cartItem.UpdatedAt = DateTime.Now;
+            cartItem.IsSelected = cartItemDto.IsSelected;
 
 
             return cartItem;

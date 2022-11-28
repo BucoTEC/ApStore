@@ -86,10 +86,10 @@ namespace DAL.Data
 
             // cart item seed
             modelBuilder.Entity<CartItem>().HasData(
-                   new CartItem() { CartItemId = 1, Quantity = 2, ProductId = 1, AppUserId = CUSTOMER_ID },
-                   new CartItem() { CartItemId = 2, Quantity = 4, ProductId = 2, AppUserId = CUSTOMER_ID },
-                   new CartItem() { CartItemId = 3, Quantity = 1, ProductId = 3, AppUserId = CUSTOMER_ID },
-                   new CartItem() { CartItemId = 4, Quantity = 2, ProductId = 4, AppUserId = CUSTOMER_ID }
+                   new CartItem() { CartItemId = 1, Quantity = 2, ProductId = 1, AppUserId = CUSTOMER_ID, IsSelected = true },
+                   new CartItem() { CartItemId = 2, Quantity = 4, ProductId = 2, AppUserId = CUSTOMER_ID, IsSelected = false },
+                   new CartItem() { CartItemId = 3, Quantity = 1, ProductId = 3, AppUserId = CUSTOMER_ID, IsSelected = true },
+                   new CartItem() { CartItemId = 4, Quantity = 2, ProductId = 4, AppUserId = CUSTOMER_ID, IsSelected = false }
 
             );
 

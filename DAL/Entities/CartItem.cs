@@ -25,5 +25,7 @@ namespace DAL.Entities
 
         public AppUser AppUser { get; set; } = null!;
 
+        public Boolean IsSelected { get; set; } = false;
+
     }
 }
