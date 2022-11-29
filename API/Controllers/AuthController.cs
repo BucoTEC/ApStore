@@ -33,7 +33,7 @@ namespace API.Controllers
 
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] SignInModel signInModel)
+        public async Task<ActionResult<LoginResDto>> Login([FromBody] SignInModel signInModel)
         {
             var result = await _authService.Login(signInModel);
 
