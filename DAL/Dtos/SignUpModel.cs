@@ -19,10 +19,8 @@ namespace DAL.Dtos
         public string Email { get; set; } = null!;
 
         [Required]
-        [Compare("ConfirmPassword")]
         public string Password { get; set; } = null!;
 
-        [Required]
-        public string ConfirmPassword { get; set; } = null!;
+
     }
 }
