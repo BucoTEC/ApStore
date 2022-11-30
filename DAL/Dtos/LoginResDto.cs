@@ -10,5 +10,9 @@ namespace DAL.Dtos
         public string Token { get; set; } = null!;
 
         public int Role { get; set; }
+
+        public string UserId { get; set; } = null!;
+
+        public DateTime Expiration { get; set; }
     }
 }

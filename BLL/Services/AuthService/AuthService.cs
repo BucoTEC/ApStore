@@ -39,7 +39,14 @@ namespace BLL.Services.Auth
             }
 
             var token = _jwtHandler.GenerateJwtToken(user);
-            return new LoginResDto() { Token = token, Role = user.AppUserRoleId };
+
+            return new LoginResDto()
+            {
+                Token = token,
+                Role = user.AppUserRoleId,
+                UserId = user.Id,
+                Expiration = DateTime.Now.AddDays(1)
+            };
         }
 
     }
