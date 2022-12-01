@@ -29,21 +29,23 @@ namespace BLL.Services.CartItemServices
             {
                 throw new Exception("No product with this id");
             }
+            var userId = _jwtHandler.DecodeToken(token).UserId;
 
-            var cartItems = await _unitOfWork.CartItem.GetCartItems(x => x.ProductId == product.ProductId);
+            var cartItems = await _unitOfWork.CartItem.GetCartItemsByUser(userId);
+
 
             if (product.AvailableAmount < cartItemDto.Quantity)
             {
                 throw new Exception("Selected amount is over availble amount");
             }
 
-            if (cartItems.Count > 0)
+            var existingCartItem = cartItems.FirstOrDefault(p => p.ProductId == product.ProductId);
+            if (existingCartItem != null)
             {
                 throw new Exception("Cart item with this product already exists");
             }
 
 
-            var userId = _jwtHandler.DecodeToken(token).UserId;
 
             var cartItem = await _unitOfWork.CartItem.CreateCartItem(cartItemDto, userId);
 

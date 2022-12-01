@@ -21,7 +21,7 @@ namespace DAL.Repositories.CartItemRepo
 
         public async Task<CartItem> CreateCartItem(CreateUpdateCartItemDto cartItemDto, string userId)
         {
-            var existingCartItem = await _context.CartItems.Where(c => c.ProductId == cartItemDto.ProductId).FirstOrDefaultAsync();
+            var existingCartItem = await _context.CartItems.Where(c => c.ProductId == cartItemDto.ProductId).Where(c => c.AppUserId == userId).FirstOrDefaultAsync();
 
             if (existingCartItem != null)
             {

@@ -10,8 +10,7 @@ namespace DAL.Dtos
     public class CreateUpdateCartItemDto
     {
         [Required]
-        [Range(1, 99)]
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 1;
 
         [Required]
         public int ProductId { get; set; }
