@@ -44,7 +44,7 @@ namespace DAL.Repositories.ProductRepo
         public async Task<Product> GetProduct(int id)
         {
 
-            var product = await _context.Products.Where(d => d.DeletedAt == null).FirstOrDefaultAsync(p => p.ProductId == id);
+            var product = await _context.Products.Where(d => d.DeletedAt == null).Include(p => p.Category).FirstOrDefaultAsync(p => p.ProductId == id);
 
             if (product != null)
             {
@@ -79,7 +79,7 @@ namespace DAL.Repositories.ProductRepo
                 Description = productDto.Description,
                 Image = productDto.Image,
                 Price = productDto.Price,
-                AvailbleAmount = productDto.AvailbleAmount,
+                AvailableAmount = productDto.AvailableAmount,
                 CategoryId = productDto.CategoryId
 
             };
@@ -109,7 +109,7 @@ namespace DAL.Repositories.ProductRepo
                 product.Description = productDto.Description;
                 product.Image = productDto.Image;
                 product.Price = productDto.Price;
-                product.AvailbleAmount = productDto.AvailbleAmount;
+                product.AvailableAmount = productDto.AvailableAmount;
                 product.CategoryId = productDto.CategoryId;
                 product.UpdatedAt = DateTime.Now;
 

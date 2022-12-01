@@ -36,10 +36,10 @@ namespace DAL.Data
 
             // seed products
             modelBuilder.Entity<Product>().HasData(
-                   new Product() { ProductId = 1, Description = "Glasses one description", AvailbleAmount = 9, CategoryId = 1, Price = 123.99M, Name = "Glasses one", ShippingPrice = 9.99M },
-                   new Product() { ProductId = 2, Description = "Glasses two description", AvailbleAmount = 7, CategoryId = 2, Price = 333.99M, Name = "Glasses two", ShippingPrice = 9.99M },
-                   new Product() { ProductId = 3, Description = "Glasses three description", AvailbleAmount = 4, CategoryId = 3, Price = 423.99M, Name = "Glasses three", ShippingPrice = 9.99M },
-                   new Product() { ProductId = 4, Description = "Glasses fore description", AvailbleAmount = 12, CategoryId = 4, Price = 523.99M, Name = "Glasses fore", ShippingPrice = 9.99M }
+                   new Product() { ProductId = 1, Description = "Glasses one description", AvailableAmount = 9, CategoryId = 1, Price = 123.99M, Name = "Glasses one", ShippingPrice = 9.99M },
+                   new Product() { ProductId = 2, Description = "Glasses two description", AvailableAmount = 7, CategoryId = 2, Price = 333.99M, Name = "Glasses two", ShippingPrice = 9.99M },
+                   new Product() { ProductId = 3, Description = "Glasses three description", AvailableAmount = 4, CategoryId = 3, Price = 423.99M, Name = "Glasses three", ShippingPrice = 9.99M },
+                   new Product() { ProductId = 4, Description = "Glasses fore description", AvailableAmount = 12, CategoryId = 4, Price = 523.99M, Name = "Glasses fore", ShippingPrice = 9.99M }
 
             );
 

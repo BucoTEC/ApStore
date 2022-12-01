@@ -23,7 +23,7 @@ namespace DAL.Entities
         [Column(TypeName = "decimal(18,4)")]
         public decimal ShippingPrice { get; set; }
 
-        public int AvailbleAmount { get; set; }
+        public int AvailableAmount { get; set; }
 
         public int CategoryId { get; set; }
 

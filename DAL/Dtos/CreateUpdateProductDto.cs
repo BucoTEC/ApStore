@@ -27,7 +27,7 @@ namespace DAL.Dtos
 
         [Required]
         [Range(1, Double.MaxValue)]
-        public int AvailbleAmount { get; set; }
+        public int AvailableAmount { get; set; }
 
         [Required]
         public int CategoryId { get; set; }

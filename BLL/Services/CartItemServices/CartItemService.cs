@@ -32,7 +32,7 @@ namespace BLL.Services.CartItemServices
 
             var cartItems = await _unitOfWork.CartItem.GetCartItems(x => x.ProductId == product.ProductId);
 
-            if (product.AvailbleAmount < cartItemDto.Quantity)
+            if (product.AvailableAmount < cartItemDto.Quantity)
             {
                 throw new Exception("Selected amount is over availble amount");
             }
@@ -100,7 +100,7 @@ namespace BLL.Services.CartItemServices
             }
 
 
-            if (product.AvailbleAmount < cartItemDto.Quantity)
+            if (product.AvailableAmount < cartItemDto.Quantity)
             {
                 throw new Exception("Selected quantity is larger than avalible amount");
             }

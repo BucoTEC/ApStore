@@ -38,7 +38,7 @@ namespace BLL.Services.OrderServices
             {
                 foreach (var cartItem in cartItems)
                 {
-                    if (cartItem.Quantity > cartItem.Product.AvailbleAmount)
+                    if (cartItem.Quantity > cartItem.Product.AvailableAmount)
                     {
                         _unitOfWork.Dispose();
 
