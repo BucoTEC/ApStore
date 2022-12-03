@@ -56,6 +56,8 @@ namespace BLL.Services.OrderServices
 
                     };
 
+                    await _unitOfWork.CartItem.DeleteCartItem(cartItem.CartItemId);
+
                     _unitOfWork.Order.CreateOrderItem(newOrderItem);
                 }
             }
