@@ -33,6 +33,7 @@ namespace DAL.Repositories.CartItemRepo
                 Quantity = cartItemDto.Quantity,
                 ProductId = cartItemDto.ProductId,
                 AppUserId = userId,
+                IsSelected = cartItemDto.IsSelected
 
             };
 
