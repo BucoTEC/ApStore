@@ -46,9 +46,13 @@ namespace DAL.Repositories.CartItemRepo
         {
             var cartItem = await _context.CartItems.FindAsync(id);
 
+
+
             if (cartItem != null)
             {
                 _context.CartItems.Remove(cartItem);
+
+                return true;
             }
 
             throw new Exception("no cart item with this id");

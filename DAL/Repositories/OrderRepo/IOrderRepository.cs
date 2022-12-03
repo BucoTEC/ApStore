@@ -12,7 +12,7 @@ namespace DAL.Repositories.OrderRepo
         Task<List<Order>> GetAllOrders();
 
 
-        void CreateOrderItem(OrderItem orderItem);
+        Task<object> CreateOrderItem(OrderItem orderItem);
 
         Task<Order> GetSingleOrder(int id);
 

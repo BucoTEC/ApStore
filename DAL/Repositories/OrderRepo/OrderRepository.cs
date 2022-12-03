@@ -32,16 +32,20 @@ namespace DAL.Repositories.OrderRepo
 
             };
 
+
+
             await _context.Orders.AddAsync(newOrder);
+
 
             return newOrder;
         }
 
-        public async void CreateOrderItem(OrderItem orderItem)
+        // TODO update return option for create order item
+        public async Task<object> CreateOrderItem(OrderItem orderItem)
         {
 
-
-            var newOrderItem = await _context.OrderItems.AddAsync(orderItem);
+            // TODO when i create order item reduce avalible item count on the product
+            return await _context.OrderItems.AddAsync(orderItem);
 
         }
 
