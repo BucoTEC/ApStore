@@ -21,13 +21,11 @@ namespace DAL.Dtos
 
 
         [Required]
-        [Column(TypeName = "decimal(18,4)")]
-        [Range(1, Double.MaxValue)]
+        [Range(0, Double.PositiveInfinity)]
         public decimal Price { get; set; }
 
         [Required]
-        [Column(TypeName = "decimal(18,4)")]
-        [Range(1, Double.MaxValue)]
+        [Range(0, Double.PositiveInfinity)]
         public decimal ShippingPrice { get; set; }
 
         [Required]
