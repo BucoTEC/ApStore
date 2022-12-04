@@ -2,6 +2,7 @@ using System.Text;
 using BLL.Services.AppUserServices;
 using BLL.Services.Auth;
 using BLL.Services.CartItemServices;
+using BLL.Services.CategoryServices;
 using BLL.Services.OrderServices;
 using BLL.Services.ProductServices;
 using BLL.Utils;
@@ -35,6 +36,9 @@ builder.Services.AddScoped<IAppUserService, AppUserService>();
 builder.Services.AddScoped<ICartItemService, CartItemService>();
 
 builder.Services.AddScoped<IOrderService, OrderService>();
+
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 
 builder.Services.AddScoped<IJwtHandler, JwtHandler>();
 

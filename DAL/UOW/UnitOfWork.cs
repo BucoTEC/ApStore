@@ -7,6 +7,7 @@ using DAL.Entities;
 using DAL.Repositories.AppUserRepo;
 using DAL.Repositories.AuthRepository;
 using DAL.Repositories.CartItemRepo;
+using DAL.Repositories.CategoryRepo;
 using DAL.Repositories.OrderItemRepo;
 using DAL.Repositories.OrderRepo;
 using DAL.Repositories.ProductRepo;
@@ -29,6 +30,9 @@ namespace DAL.UOW
         public IOrderRepository Order { get; private set; }
 
         public IOrderItemRepository OrderItem { get; private set; }
+
+        public ICategoryRepository Category { get; private set; }
+
 
 
         private readonly UserManager<AppUser> _userManager;
@@ -56,6 +60,8 @@ namespace DAL.UOW
             Order = new OrderRepository(context);
 
             OrderItem = new OrderItemRepository(context);
+
+            Category = new CategoryRepository(context);
         }
 
 
