@@ -50,7 +50,6 @@ namespace API.Controllers
         {
 
 
-            // TODO add get cart items by user that were selected 
 
             var token = await HttpContext.GetTokenAsync("access_token");
 
