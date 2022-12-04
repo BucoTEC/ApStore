@@ -61,7 +61,7 @@ namespace DAL.Repositories.OrderRepo
 
         public async Task<Order> GetSingleOrder(int id)
         {
-            var order = await _context.Orders.FindAsync(id);
+            var order = await _context.Orders.Include(o => o.OrderItems).FirstOrDefaultAsync(o => o.OrderId == id);
 
             if (order == null)
             {

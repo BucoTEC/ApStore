@@ -22,85 +22,72 @@ namespace BLL.Services.OrderServices
         public async Task<Order> CreateOrder(CreateOrderDto createOrderDto, string token)
         {
 
-            try
+            var userId = _jwtHandler.DecodeToken(token).UserId;
+
+            var newOrder = await _unitOfWork.Order.CreateOrder(createOrderDto, userId);
+
+
+
+            var cartItems = await _unitOfWork.CartItem.GetCartItemsByUser(userId);
+
+            var selectedCartItems = cartItems.Where(c => c.IsSelected == true).ToList();
+
+
+            if (selectedCartItems.Count < 1)
+            {
+                throw new Exception("No cart items for this user selected");
+            }
+            else
             {
 
-
-
-                var userId = _jwtHandler.DecodeToken(token).UserId;
-
-                var newOrder = await _unitOfWork.Order.CreateOrder(createOrderDto, userId);
-
-
-
-                var cartItems = await _unitOfWork.CartItem.GetCartItemsByUser(userId);
-
-                var selectedCartItems = cartItems.Where(c => c.IsSelected == true).ToList();
-
-
-                if (selectedCartItems.Count < 1)
+                foreach (var cartItem in selectedCartItems)
                 {
-                    throw new Exception("No cart items for this user selected");
-                }
-                else
-                {
-
-                    foreach (var cartItem in selectedCartItems)
-                    {
-                        if (cartItem.Quantity > cartItem.Product.AvailableAmount)
-                        {
-
-                            throw new Exception("The amount of selected product is over the availble amount");
-                        }
-
-                        var updateProductDto = new CreateUpdateProductDto()
-                        {
-                            Name = cartItem.Product.Name,
-                            Description = cartItem.Product.Description,
-                            Image = cartItem.Product.Image,
-                            Price = cartItem.Product.Price,
-                            AvailableAmount = cartItem.Product.AvailableAmount - cartItem.Quantity,
-                            CategoryId = cartItem.Product.CategoryId,
-                        };
-
-                        await _unitOfWork.Product.UpdateProduct(updateProductDto, cartItem.ProductId);
-
-                    }
-
-                    // creates the order for the cart items
-                    await _unitOfWork.CompleteAsync();
-
-                    foreach (var cartItem in selectedCartItems)
+                    if (cartItem.Quantity > cartItem.Product.AvailableAmount)
                     {
 
-                        var newOrderItem = new OrderItem()
-                        {
-                            ProductId = cartItem.ProductId,
-                            Price = cartItem.Product.Price,
-                            ShippingPrice = cartItem.Product.ShippingPrice,
-                            Quantity = cartItem.Quantity,
-                            Name = cartItem.Product.Name,
-                            OrderId = newOrder.OrderId
-                        };
-
-                        await _unitOfWork.CartItem.DeleteCartItem(cartItem.CartItemId);
-
-                        await _unitOfWork.Order.CreateOrderItem(newOrderItem);
+                        throw new Exception("The amount of selected product is over the availble amount");
                     }
+
+                    var updateProductDto = new CreateUpdateProductDto()
+                    {
+                        Name = cartItem.Product.Name,
+                        Description = cartItem.Product.Description,
+                        Image = cartItem.Product.Image,
+                        Price = cartItem.Product.Price,
+                        AvailableAmount = cartItem.Product.AvailableAmount - cartItem.Quantity,
+                        CategoryId = cartItem.Product.CategoryId,
+                    };
+
+                    await _unitOfWork.Product.UpdateProduct(updateProductDto, cartItem.ProductId);
+
                 }
 
+                // creates the order for the cart items
                 await _unitOfWork.CompleteAsync();
 
-                return newOrder;
-            }
-            catch (System.Exception e)
-            {
-                Console.WriteLine("========================");
-                Console.WriteLine(e?.InnerException?.Message);
-                Console.WriteLine("========================");
+                foreach (var cartItem in selectedCartItems)
+                {
 
-                throw;
+                    var newOrderItem = new OrderItem()
+                    {
+                        ProductId = cartItem.ProductId,
+                        Price = cartItem.Product.Price,
+                        ShippingPrice = cartItem.Product.ShippingPrice,
+                        Quantity = cartItem.Quantity,
+                        Name = cartItem.Product.Name,
+                        OrderId = newOrder.OrderId
+                    };
+
+                    await _unitOfWork.CartItem.DeleteCartItem(cartItem.CartItemId);
+
+                    await _unitOfWork.Order.CreateOrderItem(newOrderItem);
+                }
             }
+
+            await _unitOfWork.CompleteAsync();
+
+            return newOrder;
+
         }
 
         public async Task<List<Order>> GetAllOrders()

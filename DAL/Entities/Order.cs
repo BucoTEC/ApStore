@@ -30,3 +30,4 @@ namespace DAL.Entities
 }
 
 // TODO add is delivered update option
+// TODO add order total price
