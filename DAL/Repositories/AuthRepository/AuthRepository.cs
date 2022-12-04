@@ -35,7 +35,7 @@ namespace DAL.Repositories.AuthRepository
                 LastName = data.LastName,
                 Email = data.Email,
                 UserName = data.Email,
-                AppUserRoleId = 2
+                AppUserRoleId = 1
             };
 
             return await _userManager.CreateAsync(user, data.Password);
