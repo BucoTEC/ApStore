@@ -9,5 +9,8 @@ namespace DAL.Repositories.AppUserRepo
     public interface IAppUserRepository
     {
         Task<List<AppUser>> GetAppUsers();
+
+        Task<AppUser> GetCurrentUser(string userId);
+
     }
 }

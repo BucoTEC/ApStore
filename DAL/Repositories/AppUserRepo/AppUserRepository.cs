@@ -20,5 +20,17 @@ namespace DAL.Repositories.AppUserRepo
         {
             return await _userManager.Users.Include(c => c.CartItems).Include(o => o.Orders).ToListAsync();
         }
+
+        public async Task<AppUser> GetCurrentUser(string userId)
+        {
+            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == userId);
+
+            if (user != null)
+            {
+                return user;
+            }
+
+            throw new Exception("No user with this id");
+        }
     }
 }
