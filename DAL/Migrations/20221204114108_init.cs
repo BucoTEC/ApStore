@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DAL.Migrations
 {
-    public partial class customerSeed : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -127,7 +127,8 @@ namespace DAL.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
-                    AvailbleAmount = table.Column<int>(type: "int", nullable: false),
+                    ShippingPrice = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
+                    AvailableAmount = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -240,9 +241,7 @@ namespace DAL.Migrations
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReceiverName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Delivered = table.Column<bool>(type: "bit", nullable: false),
-                    AppUserId = table.Column<int>(type: "int", nullable: false),
-                    AppUserId1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -251,10 +250,11 @@ namespace DAL.Migrations
                 {
                     table.PrimaryKey("PK_Orders", x => x.OrderId);
                     table.ForeignKey(
-                        name: "FK_Orders_AspNetUsers_AppUserId1",
-                        column: x => x.AppUserId1,
+                        name: "FK_Orders_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -265,8 +265,8 @@ namespace DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    AppUserId = table.Column<int>(type: "int", nullable: false),
-                    AppUserId1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IsSelected = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -275,10 +275,11 @@ namespace DAL.Migrations
                 {
                     table.PrimaryKey("PK_CartItems", x => x.CartItemId);
                     table.ForeignKey(
-                        name: "FK_CartItems_AspNetUsers_AppUserId1",
-                        column: x => x.AppUserId1,
+                        name: "FK_CartItems_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CartItems_Products_ProductId",
                         column: x => x.ProductId,
@@ -295,6 +296,7 @@ namespace DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
+                    ShippingPrice = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OrderId = table.Column<int>(type: "int", nullable: false),
@@ -311,6 +313,12 @@ namespace DAL.Migrations
                         principalTable: "Orders",
                         principalColumn: "OrderId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -318,8 +326,8 @@ namespace DAL.Migrations
                 columns: new[] { "AppUserRoleId", "CreatedAt", "DeletedAt", "Description", "Name", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(291), null, null, "Customer", null },
-                    { 2, new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(345), null, null, "Admin", null }
+                    { 1, new DateTime(2022, 12, 4, 12, 41, 8, 449, DateTimeKind.Local).AddTicks(573), null, null, "Customer", null },
+                    { 2, new DateTime(2022, 12, 4, 12, 41, 8, 449, DateTimeKind.Local).AddTicks(621), null, null, "Admin", null }
                 });
 
             migrationBuilder.InsertData(
@@ -327,10 +335,10 @@ namespace DAL.Migrations
                 columns: new[] { "CategoryId", "CreatedAt", "DeletedAt", "Description", "Name", "ParentId", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(450), null, null, "Single-Vision", 0, null },
-                    { 2, new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(452), null, null, "Bifocals", 0, null },
-                    { 3, new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(453), null, null, "Trifocals", 0, null },
-                    { 4, new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(455), null, null, "Progressives", 0, null }
+                    { 1, new DateTime(2022, 12, 4, 12, 41, 8, 449, DateTimeKind.Local).AddTicks(721), null, null, "Single-Vision", 0, null },
+                    { 2, new DateTime(2022, 12, 4, 12, 41, 8, 449, DateTimeKind.Local).AddTicks(723), null, null, "Bifocals", 0, null },
+                    { 3, new DateTime(2022, 12, 4, 12, 41, 8, 449, DateTimeKind.Local).AddTicks(745), null, null, "Trifocals", 0, null },
+                    { 4, new DateTime(2022, 12, 4, 12, 41, 8, 449, DateTimeKind.Local).AddTicks(747), null, null, "Progressives", 0, null }
                 });
 
             migrationBuilder.InsertData(
@@ -338,19 +346,30 @@ namespace DAL.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "AppUserRoleId", "ConcurrencyStamp", "CreatedAt", "DeletedAt", "Email", "EmailConfirmed", "FirstName", "IsActive", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName" },
                 values: new object[,]
                 {
-                    { "168a2f66-5e90-464f-9f42-06ce1d166ce5", 0, 1, "3150a3d7-9853-495f-9b57-2c5277cea72f", new DateTime(2022, 11, 18, 22, 56, 41, 264, DateTimeKind.Local).AddTicks(2517), new DateTime(2022, 11, 18, 22, 56, 41, 264, DateTimeKind.Local).AddTicks(2520), "advan@gmail.com", false, "Advan", true, "Bucalovic", false, null, null, null, "AQAAAAEAACcQAAAAEOI4YrwN6lQJHL38R5Soh+MwE6adCEj8VO6nZ2ayiwpW4Mu5oHjEPaAIMYpofRirCA==", null, false, "fac1855e-92de-43f8-8f3f-f317eecc8b03", false, new DateTime(2022, 11, 18, 22, 56, 41, 264, DateTimeKind.Local).AddTicks(2519), "advan@gmail.com" },
-                    { "9122bb88-74ba-4cec-8d12-60799684a4b4", 0, 2, "1f9ae183-c94d-48a2-aafc-2297da20e456", new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(483), new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(485), "adnan@gmail.com", false, "Adnan", true, "Bucalovic", false, null, null, null, "AQAAAAEAACcQAAAAELjKoRCDWamazcoxXs86iJ4OHfrWZ5ZPv0sxzbzkBsUMKXuOEWpBJv2uZN5KES8ONA==", null, false, "c8ca4864-7097-4f22-8427-17c654723593", false, new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(484), "adnan@gmail.com" }
+                    { "02174cf0-9412-4cfe-afbf-59f706d72cf6", 0, 2, "47b8e3a7-3c02-406a-9d12-b14310a309a7", new DateTime(2022, 12, 4, 12, 41, 8, 449, DateTimeKind.Local).AddTicks(777), new DateTime(2022, 12, 4, 12, 41, 8, 449, DateTimeKind.Local).AddTicks(779), "adnan@gmail.com", false, "Adnan", true, "Bucalovic", false, null, "ADNAN@GMAIL.COM", "ADNAN@GMAIL.COM", "AQAAAAEAACcQAAAAEEnzp+Mj7cxqXOzIdffrd1l3XX819ip8kFdmSbf3BVv46bIpCb6m2kZR0M7eksAs9A==", null, false, "551f70ca-edd4-4fec-bf27-41787b88944c", false, new DateTime(2022, 12, 4, 12, 41, 8, 449, DateTimeKind.Local).AddTicks(778), "adnan@gmail.com" },
+                    { "341743f0-asd2-42de-afbf-59kmkkmk72cf6", 0, 1, "f710d1f2-7d23-4fb5-a3a7-a5e639413d51", new DateTime(2022, 12, 4, 12, 41, 8, 450, DateTimeKind.Local).AddTicks(3810), new DateTime(2022, 12, 4, 12, 41, 8, 450, DateTimeKind.Local).AddTicks(3813), "advan@gmail.com", false, "Advan", true, "Bucalovic", false, null, "ADVAN@GMAIL.COM", "ADVAN@GMAIL.COM", "AQAAAAEAACcQAAAAEJXDGeZxP7I26TX3MlO0fhqxJxkY/TEqoMhx1FxQJ6djbLnFQLdUSStVKEX8xNd4lQ==", null, false, "1b38bcb1-982f-4e59-9ead-923046312931", false, new DateTime(2022, 12, 4, 12, 41, 8, 450, DateTimeKind.Local).AddTicks(3812), "advan@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "ProductId", "AvailbleAmount", "CategoryId", "CreatedAt", "DeletedAt", "Description", "Image", "Name", "Price", "UpdatedAt" },
+                columns: new[] { "ProductId", "AvailableAmount", "CategoryId", "CreatedAt", "DeletedAt", "Description", "Image", "Name", "Price", "ShippingPrice", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, 9, 1, new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(471), null, "Glasses one description", null, "Glasses one", 123.99m, null },
-                    { 2, 7, 2, new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(476), null, "Glasses two description", null, "Glasses two", 333.99m, null },
-                    { 3, 4, 3, new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(477), null, "Glasses three description", null, "Glasses three", 423.99m, null },
-                    { 4, 12, 4, new DateTime(2022, 11, 18, 22, 56, 41, 263, DateTimeKind.Local).AddTicks(479), null, "Glasses fore description", null, "Glasses fore", 523.99m, null }
+                    { 1, 9, 1, new DateTime(2022, 12, 4, 12, 41, 8, 449, DateTimeKind.Local).AddTicks(763), null, "Glasses one description", null, "Glasses one", 123.99m, 9.99m, null },
+                    { 2, 7, 2, new DateTime(2022, 12, 4, 12, 41, 8, 449, DateTimeKind.Local).AddTicks(769), null, "Glasses two description", null, "Glasses two", 333.99m, 9.99m, null },
+                    { 3, 4, 3, new DateTime(2022, 12, 4, 12, 41, 8, 449, DateTimeKind.Local).AddTicks(771), null, "Glasses three description", null, "Glasses three", 423.99m, 9.99m, null },
+                    { 4, 12, 4, new DateTime(2022, 12, 4, 12, 41, 8, 449, DateTimeKind.Local).AddTicks(772), null, "Glasses fore description", null, "Glasses fore", 523.99m, 9.99m, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "CartItems",
+                columns: new[] { "CartItemId", "AppUserId", "CreatedAt", "DeletedAt", "IsSelected", "ProductId", "Quantity", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, "341743f0-asd2-42de-afbf-59kmkkmk72cf6", new DateTime(2022, 12, 4, 12, 41, 8, 451, DateTimeKind.Local).AddTicks(6287), null, true, 1, 2, null },
+                    { 2, "341743f0-asd2-42de-afbf-59kmkkmk72cf6", new DateTime(2022, 12, 4, 12, 41, 8, 451, DateTimeKind.Local).AddTicks(6289), null, false, 2, 4, null },
+                    { 3, "341743f0-asd2-42de-afbf-59kmkkmk72cf6", new DateTime(2022, 12, 4, 12, 41, 8, 451, DateTimeKind.Local).AddTicks(6291), null, true, 3, 1, null },
+                    { 4, "341743f0-asd2-42de-afbf-59kmkkmk72cf6", new DateTime(2022, 12, 4, 12, 41, 8, 451, DateTimeKind.Local).AddTicks(6292), null, false, 4, 2, null }
                 });
 
             migrationBuilder.CreateIndex(
@@ -398,9 +417,9 @@ namespace DAL.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartItems_AppUserId1",
+                name: "IX_CartItems_AppUserId",
                 table: "CartItems",
-                column: "AppUserId1");
+                column: "AppUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartItems_ProductId",
@@ -413,9 +432,14 @@ namespace DAL.Migrations
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_AppUserId1",
+                name: "IX_OrderItems_ProductId",
+                table: "OrderItems",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_AppUserId",
                 table: "Orders",
-                column: "AppUserId1");
+                column: "AppUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
@@ -450,16 +474,16 @@ namespace DAL.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Products");
-
-            migrationBuilder.DropTable(
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "AppUserRoles");
