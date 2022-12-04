@@ -110,6 +110,7 @@ namespace DAL.Repositories.ProductRepo
                 product.Description = productDto.Description;
                 product.Image = productDto.Image;
                 product.Price = productDto.Price;
+                product.ShippingPrice = productDto.ShippingPrice;
                 product.AvailableAmount = productDto.AvailableAmount;
                 product.CategoryId = productDto.CategoryId;
                 product.UpdatedAt = DateTime.Now;
