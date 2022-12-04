@@ -78,6 +78,7 @@ namespace DAL.Repositories.ProductRepo
                 Name = productDto.Name,
                 Description = productDto.Description,
                 Image = productDto.Image,
+                ShippingPrice = productDto.ShippingPrice,
                 Price = productDto.Price,
                 AvailableAmount = productDto.AvailableAmount,
                 CategoryId = productDto.CategoryId

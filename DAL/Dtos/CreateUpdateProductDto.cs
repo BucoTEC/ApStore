@@ -26,6 +26,11 @@ namespace DAL.Dtos
         public decimal Price { get; set; }
 
         [Required]
+        [Column(TypeName = "decimal(18,4)")]
+        [Range(1, Double.MaxValue)]
+        public decimal ShippingPrice { get; set; }
+
+        [Required]
         [Range(1, Double.MaxValue)]
         public int AvailableAmount { get; set; }
 
