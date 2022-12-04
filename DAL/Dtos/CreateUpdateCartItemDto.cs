@@ -20,4 +20,3 @@ namespace DAL.Dtos
     }
 }
 
-// TODO separate create and update cart item dtos
