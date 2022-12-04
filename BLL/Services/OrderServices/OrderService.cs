@@ -53,7 +53,17 @@ namespace BLL.Services.OrderServices
                             throw new Exception("The amount of selected product is over the availble amount");
                         }
 
+                        var updateProductDto = new CreateUpdateProductDto()
+                        {
+                            Name = cartItem.Product.Name,
+                            Description = cartItem.Product.Description,
+                            Image = cartItem.Product.Image,
+                            Price = cartItem.Product.Price,
+                            AvailableAmount = cartItem.Product.AvailableAmount - cartItem.Quantity,
+                            CategoryId = cartItem.Product.CategoryId,
+                        };
 
+                        await _unitOfWork.Product.UpdateProduct(updateProductDto, cartItem.ProductId);
 
                     }
 

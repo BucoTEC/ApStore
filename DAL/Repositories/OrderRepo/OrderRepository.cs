@@ -44,7 +44,7 @@ namespace DAL.Repositories.OrderRepo
         public async Task<object> CreateOrderItem(OrderItem orderItem)
         {
 
-            // TODO when i create order item reduce avalible item count on the product
+
             return await _context.OrderItems.AddAsync(orderItem);
 
         }
