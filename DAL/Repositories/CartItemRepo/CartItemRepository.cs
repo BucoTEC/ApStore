@@ -42,6 +42,21 @@ namespace DAL.Repositories.CartItemRepo
             return newCartItem;
         }
 
+        public async Task<bool> DeleteCartItemByProduct(int id)
+        {
+            var cartItems = await _context.CartItems.Where(c => c.ProductId == id).ToListAsync();
+
+
+
+            if (cartItems != null)
+            {
+                _context.CartItems.RemoveRange(cartItems);
+
+                return true;
+            }
+
+            return false;
+        }
         public async Task<bool> DeleteCartItem(int id)
         {
             var cartItem = await _context.CartItems.FindAsync(id);

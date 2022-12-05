@@ -31,6 +31,8 @@ namespace BLL.Services.ProductServices
         {
             var DeleteProduct = await _unitOfWork.Product.DeleteProduct(id);
 
+            await _unitOfWork.CartItem.DeleteCartItemByProduct(id);
+
             if (DeleteProduct == true)
             {
 

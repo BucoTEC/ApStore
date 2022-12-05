@@ -23,6 +23,8 @@ namespace DAL.Repositories.CartItemRepo
 
         Task<CartItem> UpdateCartItem(CreateUpdateCartItemDto cartItemDto, int productId, string userId);
 
+        Task<bool> DeleteCartItemByProduct(int id);
+
         Task<bool> DeleteCartItem(int id);
 
         Task<bool> DeleteCartItemByUser(int id, string token);
