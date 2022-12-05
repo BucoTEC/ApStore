@@ -25,7 +25,26 @@ namespace API.Controllers
         {
             var prods = await _productService.GetProducts();
 
+
             return Ok(prods);
+        }
+
+        [HttpGet("paged")]
+        public async Task<ActionResult<List<Product>>> GetPagedProducts([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 6, [FromQuery] string? search = null)
+        {
+            // TODO finish implementation of paging including total pages count
+            var prods = await _productService.GetProducts();
+            if (search != null)
+            {
+
+                var pagedProds = prods.Where(c => c.Name.Contains(search)).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+                return Ok(pagedProds);
+            }
+
+            var pp = prods.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return Ok(pp);
+
+
         }
 
         [HttpDelete("{id}")]
