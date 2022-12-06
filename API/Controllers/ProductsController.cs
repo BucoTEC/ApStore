@@ -30,19 +30,74 @@ namespace API.Controllers
         }
 
         [HttpGet("paged")]
-        public async Task<ActionResult<List<Product>>> GetPagedProducts([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 6, [FromQuery] string? search = null)
+        public async Task<ActionResult<PaginationResDto>> GetPagedProducts(
+            [FromQuery] int pageNumber = 1,
+            [FromQuery] int pageSize = 4,
+            [FromQuery] string? search = null,
+            [FromQuery] int? categoryId = null,
+            [FromQuery] string? orderByPrice = null,
+            [FromQuery] string? orderCreatedAt = null
+
+
+            )
         {
-            // TODO finish implementation of paging including total pages count
-            var prods = await _productService.GetProducts();
+
+            var products = await _productService.GetProducts();
             if (search != null)
             {
+                products = products.Where(c => c.Name.Contains(search)).ToList();
 
-                var pagedProds = prods.Where(c => c.Name.Contains(search)).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
-                return Ok(pagedProds);
             }
 
-            var pp = prods.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
-            return Ok(pp);
+            if (categoryId != null)
+            {
+                products = products.Where(c => c.CategoryId == categoryId).ToList();
+
+            }
+
+            if (orderByPrice != null)
+            {
+
+                if (orderByPrice == "DESC")
+                {
+
+                    products = products.OrderByDescending(p => p.Price).ToList();
+                }
+
+                if (orderByPrice == "ASC")
+                {
+
+                    products = products.OrderBy(p => p.Price).ToList();
+                }
+
+            }
+
+            if (orderCreatedAt != null)
+            {
+
+                if (orderCreatedAt == "DESC")
+                {
+
+                    products = products.OrderByDescending(p => p.CreatedAt).ToList();
+                }
+
+                if (orderCreatedAt == "ASC")
+                {
+
+                    products = products.OrderBy(p => p.CreatedAt).ToList();
+                }
+
+            }
+            var pageCount = (products.Count() + pageSize - 1) / pageSize;
+            products = products.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+
+            return Ok(
+                new PaginationResDto()
+                {
+                    NumOfPages = pageCount,
+                    Data = products
+                }
+            );
 
 
         }
