@@ -10,7 +10,7 @@ namespace DAL.Dtos
     {
         public int NumOfPages { get; set; }
 
-        public int CurrentPage { get; set; }
+        public int? CurrentPage { get; set; }
 
 
         public List<Product>? Data { get; set; }
