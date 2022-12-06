@@ -39,7 +39,7 @@ namespace DAL.Data
 
             for (int i = 1; i < 30; i++)
             {
-                var newProduct = new Product() { ProductId = i, Description = "Glasses one description", AvailableAmount = 1 + i, CategoryId = rnd.Next(1, 5), Price = 123.99M, Name = "Glasses " + i.ToString(), ShippingPrice = 9.99M };
+                var newProduct = new Product() { ProductId = i, Description = "Glasses one description", AvailableAmount = 1 + i, CategoryId = rnd.Next(1, 5), Price = rnd.Next(23, 299), Name = "Glasses " + i.ToString(), ShippingPrice = 9.99M };
 
                 prods.Add(newProduct);
             }
