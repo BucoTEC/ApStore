@@ -38,7 +38,7 @@ namespace DAL.Repositories.ProductRepo
 
         public async Task<List<Product>> GetProducts()
         {
-            return await _context.Products.Where(d => d.DeletedAt == null).ToListAsync();
+            return await _context.Products.Where(d => d.DeletedAt == null).Include(c => c.Category).ToListAsync();
         }
 
         public async Task<Product> GetProduct(int id)
