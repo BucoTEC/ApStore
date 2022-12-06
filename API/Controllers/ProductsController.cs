@@ -97,7 +97,8 @@ namespace API.Controllers
                 new PaginationResDto()
                 {
                     NumOfPages = pageCount,
-                    Data = products
+                    Data = products,
+                    CurrentPage = pageNumber
                 }
             );
 
