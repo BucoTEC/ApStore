@@ -29,7 +29,6 @@ namespace DAL.Repositories.AppUserRepo
             {
                 return user;
             }
-
             throw new Exception("No user with this id");
         }
     }
