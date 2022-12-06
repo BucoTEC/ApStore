@@ -42,6 +42,8 @@ namespace API.Controllers
             )
         {
 
+            // TODO move filtering logic to BLL
+
             var products = await _productService.GetProducts();
             if (search != null)
             {
