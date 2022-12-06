@@ -29,7 +29,7 @@ namespace DAL.Dtos
         public decimal ShippingPrice { get; set; }
 
         [Required]
-        [Range(1, Double.MaxValue)]
+        [Range(0, Double.MaxValue)]
         public int AvailableAmount { get; set; }
 
         [Required]
