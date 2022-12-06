@@ -34,14 +34,17 @@ namespace DAL.Data
 
             );
 
-            // seed products
-            modelBuilder.Entity<Product>().HasData(
-                   new Product() { ProductId = 1, Description = "Glasses one description", AvailableAmount = 9, CategoryId = 1, Price = 123.99M, Name = "Glasses one", ShippingPrice = 9.99M },
-                   new Product() { ProductId = 2, Description = "Glasses two description", AvailableAmount = 7, CategoryId = 2, Price = 333.99M, Name = "Glasses two", ShippingPrice = 9.99M },
-                   new Product() { ProductId = 3, Description = "Glasses three description", AvailableAmount = 4, CategoryId = 3, Price = 423.99M, Name = "Glasses three", ShippingPrice = 9.99M },
-                   new Product() { ProductId = 4, Description = "Glasses fore description", AvailableAmount = 12, CategoryId = 4, Price = 523.99M, Name = "Glasses fore", ShippingPrice = 9.99M }
+            List<Product> prods = new List<Product>();
+            Random rnd = new Random();
 
-            );
+            for (int i = 1; i < 30; i++)
+            {
+                var newProduct = new Product() { ProductId = i, Description = "Glasses one description", AvailableAmount = 1 + i, CategoryId = rnd.Next(1, 5), Price = 123.99M, Name = "Glasses " + i.ToString(), ShippingPrice = 9.99M };
+
+                prods.Add(newProduct);
+            }
+            // seed products
+            modelBuilder.Entity<Product>().HasData(prods);
 
             string ADMIN_ID = "02174cf0-9412-4cfe-afbf-59f706d72cf6";
             string CUSTOMER_ID = "341743f0-asd2-42de-afbf-59kmkkmk72cf6";

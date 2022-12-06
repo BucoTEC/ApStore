@@ -32,7 +32,7 @@ namespace API.Controllers
         [HttpGet("paged")]
         public async Task<ActionResult<PaginationResDto>> GetPagedProducts(
             [FromQuery] int pageNumber = 1,
-            [FromQuery] int pageSize = 4,
+            [FromQuery] int pageSize = 6,
             [FromQuery] string? search = null,
             [FromQuery] int? categoryId = null,
             [FromQuery] string? orderByPrice = null,

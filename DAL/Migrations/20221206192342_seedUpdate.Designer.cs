@@ -4,6 +4,7 @@ using DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221206192342_seedUpdate")]
+    partial class seedUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,9 +119,9 @@ namespace DAL.Migrations
                             Id = "02174cf0-9412-4cfe-afbf-59f706d72cf6",
                             AccessFailedCount = 0,
                             AppUserRoleId = 2,
-                            ConcurrencyStamp = "d5c26496-cd32-4193-a987-8b0056593b63",
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3955),
-                            DeletedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3958),
+                            ConcurrencyStamp = "8f80514c-6991-4c5c-a90a-336381059a9f",
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6573),
+                            DeletedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6576),
                             Email = "adnan@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Adnan",
@@ -128,11 +130,11 @@ namespace DAL.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADNAN@GMAIL.COM",
                             NormalizedUserName = "ADNAN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENhReEPIUQVGXR26MKkhFFPnkt6yKi3+7ygfzeZhrOw13weDwh8sCedonj4/95pjwQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELYA1H/yWn7CpJHJ9cWgbNIwfFqXdwIKIESsYEWEKcrBMf50ZY6XZv7ftF/XpT4Tmg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "796ed5f7-5623-4567-95be-06e744cb04ab",
+                            SecurityStamp = "3c201282-5214-49f6-9f13-f8b5bac7e53a",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3956),
+                            UpdatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6574),
                             UserName = "adnan@gmail.com"
                         },
                         new
@@ -140,9 +142,9 @@ namespace DAL.Migrations
                             Id = "341743f0-asd2-42de-afbf-59kmkkmk72cf6",
                             AccessFailedCount = 0,
                             AppUserRoleId = 1,
-                            ConcurrencyStamp = "6f44c261-6d9c-4c81-8521-df022b737812",
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 129, DateTimeKind.Local).AddTicks(8776),
-                            DeletedAt = new DateTime(2022, 12, 6, 20, 31, 5, 129, DateTimeKind.Local).AddTicks(8786),
+                            ConcurrencyStamp = "52dd2695-77d1-4397-ba5f-bb3026a56b94",
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 69, DateTimeKind.Local).AddTicks(8654),
+                            DeletedAt = new DateTime(2022, 12, 6, 20, 23, 42, 69, DateTimeKind.Local).AddTicks(8657),
                             Email = "advan@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Advan",
@@ -151,11 +153,11 @@ namespace DAL.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADVAN@GMAIL.COM",
                             NormalizedUserName = "ADVAN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMhQvIoQflgAYG7rMl9v64GZFR+f+Dyn4HYuaVyz4eh5eoDn9jwo9aI2j676hB8nGw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECuyJQ/yAAxu8+t/qirzR9v4HIJqlc5FABercgFg2fEC6gUpSv2b5JnsyrzOOb9mAw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9a9d7f9d-5781-4535-be19-0d9195845178",
+                            SecurityStamp = "71a3f965-0437-4c7f-807e-91f18cee227a",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 129, DateTimeKind.Local).AddTicks(8784),
+                            UpdatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 69, DateTimeKind.Local).AddTicks(8656),
                             UserName = "advan@gmail.com"
                         });
                 });
@@ -192,13 +194,13 @@ namespace DAL.Migrations
                         new
                         {
                             AppUserRoleId = 1,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3604),
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6270),
                             Name = "Customer"
                         },
                         new
                         {
                             AppUserRoleId = 2,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3646),
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6312),
                             Name = "Admin"
                         });
                 });
@@ -246,7 +248,7 @@ namespace DAL.Migrations
                         {
                             CartItemId = 1,
                             AppUserId = "341743f0-asd2-42de-afbf-59kmkkmk72cf6",
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 131, DateTimeKind.Local).AddTicks(2855),
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 71, DateTimeKind.Local).AddTicks(1512),
                             IsSelected = true,
                             ProductId = 1,
                             Quantity = 2
@@ -255,7 +257,7 @@ namespace DAL.Migrations
                         {
                             CartItemId = 2,
                             AppUserId = "341743f0-asd2-42de-afbf-59kmkkmk72cf6",
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 131, DateTimeKind.Local).AddTicks(2866),
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 71, DateTimeKind.Local).AddTicks(1517),
                             IsSelected = false,
                             ProductId = 2,
                             Quantity = 4
@@ -264,7 +266,7 @@ namespace DAL.Migrations
                         {
                             CartItemId = 3,
                             AppUserId = "341743f0-asd2-42de-afbf-59kmkkmk72cf6",
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 131, DateTimeKind.Local).AddTicks(2868),
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 71, DateTimeKind.Local).AddTicks(1519),
                             IsSelected = true,
                             ProductId = 3,
                             Quantity = 1
@@ -273,7 +275,7 @@ namespace DAL.Migrations
                         {
                             CartItemId = 4,
                             AppUserId = "341743f0-asd2-42de-afbf-59kmkkmk72cf6",
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 131, DateTimeKind.Local).AddTicks(2869),
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 71, DateTimeKind.Local).AddTicks(1521),
                             IsSelected = false,
                             ProductId = 4,
                             Quantity = 2
@@ -315,28 +317,28 @@ namespace DAL.Migrations
                         new
                         {
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3770),
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6422),
                             Name = "Single-Vision",
                             ParentId = 0
                         },
                         new
                         {
                             CategoryId = 2,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3773),
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6424),
                             Name = "Bifocals",
                             ParentId = 0
                         },
                         new
                         {
                             CategoryId = 3,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3774),
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6426),
                             Name = "Trifocals",
                             ParentId = 0
                         },
                         new
                         {
                             CategoryId = 4,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3776),
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6427),
                             Name = "Progressives",
                             ParentId = 0
                         });
@@ -486,10 +488,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 1,
                             AvailableAmount = 2,
-                            CategoryId = 2,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3825),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6433),
                             Description = "Glasses one description",
-                            Name = "Glasses 1",
+                            Name = "Glasses one1",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -497,10 +499,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 2,
                             AvailableAmount = 3,
-                            CategoryId = 3,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3849),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6452),
                             Description = "Glasses one description",
-                            Name = "Glasses 2",
+                            Name = "Glasses one2",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -508,10 +510,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 3,
                             AvailableAmount = 4,
-                            CategoryId = 4,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3851),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6455),
                             Description = "Glasses one description",
-                            Name = "Glasses 3",
+                            Name = "Glasses one3",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -519,10 +521,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 4,
                             AvailableAmount = 5,
-                            CategoryId = 4,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3853),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6456),
                             Description = "Glasses one description",
-                            Name = "Glasses 4",
+                            Name = "Glasses one4",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -530,10 +532,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 5,
                             AvailableAmount = 6,
-                            CategoryId = 2,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3854),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6457),
                             Description = "Glasses one description",
-                            Name = "Glasses 5",
+                            Name = "Glasses one5",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -542,9 +544,9 @@ namespace DAL.Migrations
                             ProductId = 6,
                             AvailableAmount = 7,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3858),
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6460),
                             Description = "Glasses one description",
-                            Name = "Glasses 6",
+                            Name = "Glasses one6",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -552,10 +554,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 7,
                             AvailableAmount = 8,
-                            CategoryId = 3,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3860),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6462),
                             Description = "Glasses one description",
-                            Name = "Glasses 7",
+                            Name = "Glasses one7",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -563,10 +565,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 8,
                             AvailableAmount = 9,
-                            CategoryId = 3,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3861),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6464),
                             Description = "Glasses one description",
-                            Name = "Glasses 8",
+                            Name = "Glasses one8",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -574,10 +576,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 9,
                             AvailableAmount = 10,
-                            CategoryId = 4,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3863),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6465),
                             Description = "Glasses one description",
-                            Name = "Glasses 9",
+                            Name = "Glasses one9",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -585,10 +587,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 10,
                             AvailableAmount = 11,
-                            CategoryId = 3,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3865),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6467),
                             Description = "Glasses one description",
-                            Name = "Glasses 10",
+                            Name = "Glasses one10",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -596,10 +598,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 11,
                             AvailableAmount = 12,
-                            CategoryId = 2,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3868),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6469),
                             Description = "Glasses one description",
-                            Name = "Glasses 11",
+                            Name = "Glasses one11",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -607,10 +609,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 12,
                             AvailableAmount = 13,
-                            CategoryId = 2,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3869),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6471),
                             Description = "Glasses one description",
-                            Name = "Glasses 12",
+                            Name = "Glasses one12",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -618,10 +620,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 13,
                             AvailableAmount = 14,
-                            CategoryId = 2,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3871),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6472),
                             Description = "Glasses one description",
-                            Name = "Glasses 13",
+                            Name = "Glasses one13",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -630,9 +632,9 @@ namespace DAL.Migrations
                             ProductId = 14,
                             AvailableAmount = 15,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3872),
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6473),
                             Description = "Glasses one description",
-                            Name = "Glasses 14",
+                            Name = "Glasses one14",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -640,10 +642,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 15,
                             AvailableAmount = 16,
-                            CategoryId = 3,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3874),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6475),
                             Description = "Glasses one description",
-                            Name = "Glasses 15",
+                            Name = "Glasses one15",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -652,9 +654,9 @@ namespace DAL.Migrations
                             ProductId = 16,
                             AvailableAmount = 17,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3875),
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6476),
                             Description = "Glasses one description",
-                            Name = "Glasses 16",
+                            Name = "Glasses one16",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -662,10 +664,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 17,
                             AvailableAmount = 18,
-                            CategoryId = 3,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3877),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6477),
                             Description = "Glasses one description",
-                            Name = "Glasses 17",
+                            Name = "Glasses one17",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -673,10 +675,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 18,
                             AvailableAmount = 19,
-                            CategoryId = 2,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3880),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6480),
                             Description = "Glasses one description",
-                            Name = "Glasses 18",
+                            Name = "Glasses one18",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -684,10 +686,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 19,
                             AvailableAmount = 20,
-                            CategoryId = 2,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3881),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6519),
                             Description = "Glasses one description",
-                            Name = "Glasses 19",
+                            Name = "Glasses one19",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -695,10 +697,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 20,
                             AvailableAmount = 21,
-                            CategoryId = 3,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3883),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6521),
                             Description = "Glasses one description",
-                            Name = "Glasses 20",
+                            Name = "Glasses one20",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -706,10 +708,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 21,
                             AvailableAmount = 22,
-                            CategoryId = 2,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3885),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6523),
                             Description = "Glasses one description",
-                            Name = "Glasses 21",
+                            Name = "Glasses one21",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -717,10 +719,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 22,
                             AvailableAmount = 23,
-                            CategoryId = 2,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3886),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6524),
                             Description = "Glasses one description",
-                            Name = "Glasses 22",
+                            Name = "Glasses one22",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -728,10 +730,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 23,
                             AvailableAmount = 24,
-                            CategoryId = 4,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3888),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6525),
                             Description = "Glasses one description",
-                            Name = "Glasses 23",
+                            Name = "Glasses one23",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -739,10 +741,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 24,
                             AvailableAmount = 25,
-                            CategoryId = 4,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3889),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6527),
                             Description = "Glasses one description",
-                            Name = "Glasses 24",
+                            Name = "Glasses one24",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -750,10 +752,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 25,
                             AvailableAmount = 26,
-                            CategoryId = 4,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3891),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6528),
                             Description = "Glasses one description",
-                            Name = "Glasses 25",
+                            Name = "Glasses one25",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -761,10 +763,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 26,
                             AvailableAmount = 27,
-                            CategoryId = 4,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3893),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6530),
                             Description = "Glasses one description",
-                            Name = "Glasses 26",
+                            Name = "Glasses one26",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -772,10 +774,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 27,
                             AvailableAmount = 28,
-                            CategoryId = 3,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3894),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6531),
                             Description = "Glasses one description",
-                            Name = "Glasses 27",
+                            Name = "Glasses one27",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -784,9 +786,9 @@ namespace DAL.Migrations
                             ProductId = 28,
                             AvailableAmount = 29,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3896),
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6532),
                             Description = "Glasses one description",
-                            Name = "Glasses 28",
+                            Name = "Glasses one28",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         },
@@ -794,10 +796,10 @@ namespace DAL.Migrations
                         {
                             ProductId = 29,
                             AvailableAmount = 30,
-                            CategoryId = 3,
-                            CreatedAt = new DateTime(2022, 12, 6, 20, 31, 5, 128, DateTimeKind.Local).AddTicks(3897),
+                            CategoryId = 1,
+                            CreatedAt = new DateTime(2022, 12, 6, 20, 23, 42, 68, DateTimeKind.Local).AddTicks(6533),
                             Description = "Glasses one description",
-                            Name = "Glasses 29",
+                            Name = "Glasses one29",
                             Price = 123.99m,
                             ShippingPrice = 9.99m
                         });
