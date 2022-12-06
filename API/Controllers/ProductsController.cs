@@ -51,7 +51,7 @@ namespace API.Controllers
 
             }
 
-            if (categoryId != null)
+            if (categoryId != null && categoryId != 0)
             {
                 products = products.Where(c => c.CategoryId == categoryId).ToList();
 
@@ -60,13 +60,13 @@ namespace API.Controllers
             if (orderByPrice != null)
             {
 
-                if (orderByPrice == "DESC")
+                if (orderByPrice == "priceDESC")
                 {
 
                     products = products.OrderByDescending(p => p.Price).ToList();
                 }
 
-                if (orderByPrice == "ASC")
+                if (orderByPrice == "priceASC")
                 {
 
                     products = products.OrderBy(p => p.Price).ToList();
@@ -77,13 +77,13 @@ namespace API.Controllers
             if (orderCreatedAt != null)
             {
 
-                if (orderCreatedAt == "DESC")
+                if (orderCreatedAt == "timeDESC")
                 {
 
                     products = products.OrderByDescending(p => p.CreatedAt).ToList();
                 }
 
-                if (orderCreatedAt == "ASC")
+                if (orderCreatedAt == "timeASC")
                 {
 
                     products = products.OrderBy(p => p.CreatedAt).ToList();
