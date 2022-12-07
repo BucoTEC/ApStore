@@ -31,6 +31,9 @@ namespace DAL.Data
 
         public DbSet<Product> Products { get; set; } = null!;
 
+        public DbSet<ProductWip> ProductWips { get; set; } = null!;
+
+
 
 
 

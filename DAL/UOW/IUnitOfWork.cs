@@ -9,6 +9,7 @@ using DAL.Repositories.CategoryRepo;
 using DAL.Repositories.OrderItemRepo;
 using DAL.Repositories.OrderRepo;
 using DAL.Repositories.ProductRepo;
+using DAL.Repositories.ProductWipRepo;
 
 namespace DAL.UOW
 {
@@ -27,6 +28,8 @@ namespace DAL.UOW
         IOrderItemRepository OrderItem { get; }
 
         ICategoryRepository Category { get; }
+
+        IProductWipRepository ProductWip { get; }
 
         Task CompleteAsync();
 

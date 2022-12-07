@@ -9,7 +9,12 @@ namespace BLL.Services.ProductServices
 {
     public interface IProductService
     {
+        Task<string> ProductWip(int productId, string token);
+
+        Task<Boolean> ProductWipDelete(int productId, string token);
+
         Task<List<Product>> GetProducts();
+
         Task<Product> GetProduct(int id);
 
         Task<bool> DeleteProduct(int id);

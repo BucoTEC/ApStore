@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    public class WorkInProgress
+    public class ProductWip
     {
-        public int WorkInProgressId { get; set; }
+        public int ProductWipId { get; set; }
 
         public string EditorId { get; set; } = null!;
 
-        public int IsBeingWorkedOnId { get; set; }
+        public int ProductId { get; set; }
     }
 }
