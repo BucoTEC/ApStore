@@ -136,7 +136,7 @@ namespace API.Controllers
         [HttpGet("wip/{id}")]
         [Authorize(Roles = "Admin")]
 
-        public async Task<ActionResult> WipProduct([FromRoute] int id)
+        public async Task<IActionResult> WipProduct([FromRoute] int id)
         {
             var token = await HttpContext.GetTokenAsync("access_token");
 
@@ -152,7 +152,7 @@ namespace API.Controllers
         [HttpDelete("wip/{id}")]
         [Authorize(Roles = "Admin")]
 
-        public async Task<ActionResult> WipProductRemove([FromRoute] int id)
+        public async Task<IActionResult> WipProductRemove([FromRoute] int id)
         {
             var token = await HttpContext.GetTokenAsync("access_token");
 

@@ -33,6 +33,8 @@ namespace BLL.Services.ProductServices
 
             var newProductWip = await _unitOfWork.ProductWip.Create(productId, userId);
 
+            await _unitOfWork.CompleteAsync();
+
             return newProductWip.EditorId;
         }
 
@@ -48,6 +50,9 @@ namespace BLL.Services.ProductServices
 
 
             await _unitOfWork.ProductWip.Delete(productId);
+
+            await _unitOfWork.CompleteAsync();
+
 
             return true;
 

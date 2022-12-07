@@ -24,6 +24,8 @@ namespace DAL.Repositories.ProductWipRepo
             {
 
                 _context.ProductWips.Remove(productWip);
+
+                return true;
             }
 
 
@@ -35,14 +37,10 @@ namespace DAL.Repositories.ProductWipRepo
 
             var productWip = await _context.ProductWips.FirstOrDefaultAsync(c => c.ProductId == productId);
 
-            if (productWip != null)
-            {
 
-                return productWip;
-            }
+            return productWip;
 
 
-            throw new Exception("No wip for product with this id");
         }
 
         public async Task<ProductWip> Create(int productId, string userId)
