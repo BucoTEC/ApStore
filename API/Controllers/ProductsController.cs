@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BLL.Services.ProductServices;
 using DAL.Dtos;
 using DAL.Entities;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -129,6 +130,40 @@ namespace API.Controllers
             var product = await _productService.GetProduct(id);
 
             return Ok(product);
+        }
+
+
+        [HttpGet("wip/{id}")]
+        [Authorize(Roles = "Admin")]
+
+        public async Task<IActionResult> WipProduct([FromRoute] int id)
+        {
+            var token = await HttpContext.GetTokenAsync("access_token");
+
+            if (token == null)
+            {
+                throw new Exception("No token provided");
+            }
+
+            var userId = await _productService.ProductWip(id, token);
+
+            return Ok(userId);
+        }
+        [HttpDelete("wip/{id}")]
+        [Authorize(Roles = "Admin")]
+
+        public async Task<IActionResult> WipProductRemove([FromRoute] int id)
+        {
+            var token = await HttpContext.GetTokenAsync("access_token");
+
+            if (token == null)
+            {
+                throw new Exception("No token provided");
+            }
+
+            var userId = await _productService.ProductWipDelete(id, token);
+
+            return Ok(userId);
         }
 
         [HttpPost]

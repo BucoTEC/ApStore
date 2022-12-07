@@ -11,6 +11,7 @@ using DAL.Repositories.CategoryRepo;
 using DAL.Repositories.OrderItemRepo;
 using DAL.Repositories.OrderRepo;
 using DAL.Repositories.ProductRepo;
+using DAL.Repositories.ProductWipRepo;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 
@@ -32,6 +33,9 @@ namespace DAL.UOW
         public IOrderItemRepository OrderItem { get; private set; }
 
         public ICategoryRepository Category { get; private set; }
+
+        public IProductWipRepository ProductWip { get; private set; }
+
 
 
 
@@ -62,6 +66,8 @@ namespace DAL.UOW
             OrderItem = new OrderItemRepository(context);
 
             Category = new CategoryRepository(context);
+
+            ProductWip = new ProductWipRepository(context);
         }
 
 
