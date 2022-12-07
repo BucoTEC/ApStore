@@ -38,7 +38,7 @@ namespace DAL.Repositories.ProductWipRepo
             var productWip = await _context.ProductWips.FirstOrDefaultAsync(c => c.ProductId == productId);
 
 
-            return productWip;
+            return productWip!;
 
 
         }
