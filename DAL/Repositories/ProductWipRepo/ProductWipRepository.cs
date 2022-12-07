@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DAL.Data;
 using DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories.ProductWipRepo
 {
@@ -15,19 +16,46 @@ namespace DAL.Repositories.ProductWipRepo
             _context = context;
         }
 
-        public Task<bool> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            var productWip = await _context.ProductWips.FirstOrDefaultAsync(c => c.ProductId == id);
+
+            if (productWip != null)
+            {
+
+                _context.ProductWips.Remove(productWip);
+            }
+
+
+            throw new Exception("No wip for product with this id");
         }
 
-        public Task<ProductWip> GetByProductId(int productId)
+        public async Task<ProductWip> GetByProductId(int productId)
         {
-            throw new NotImplementedException();
+
+            var productWip = await _context.ProductWips.FirstOrDefaultAsync(c => c.ProductId == productId);
+
+            if (productWip != null)
+            {
+
+                return productWip;
+            }
+
+
+            throw new Exception("No wip for product with this id");
         }
 
-        public Task<ProductWip> Create(int productId, string userId)
+        public async Task<ProductWip> Create(int productId, string userId)
         {
-            throw new NotImplementedException();
+            var newProductWip = new ProductWip()
+            {
+                EditorId = userId,
+                ProductId = productId
+            };
+
+            await _context.ProductWips.AddAsync(newProductWip);
+
+            return newProductWip;
         }
     }
 }
