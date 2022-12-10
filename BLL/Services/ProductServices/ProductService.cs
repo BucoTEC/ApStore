@@ -45,7 +45,7 @@ namespace BLL.Services.ProductServices
 
             if (productWip.EditorId != userId)
             {
-                throw new Exception("Not ownr of work in progress");
+                throw new Exception("Not owner of work in progress");
             }
 
 
