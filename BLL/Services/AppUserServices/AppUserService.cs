@@ -35,6 +35,7 @@ namespace BLL.Services.AppUserServices
 
             var user = await _unitOfWork.AppUser.GetCurrentUser(userId);
 
+
             return new UserDataDto()
             {
                 Id = user.Id,
