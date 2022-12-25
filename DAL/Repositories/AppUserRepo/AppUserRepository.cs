@@ -18,6 +18,11 @@ namespace DAL.Repositories.AppUserRepo
 
         public async Task<List<AppUser>> GetAppUsers()
         {
+            var count = await _userManager.Users.CountAsync();
+            Console.WriteLine("======================================================");
+            Console.WriteLine(count);
+            Console.WriteLine("======================================================");
+
             return await _userManager.Users.Include(c => c.CartItems).Include(o => o.Orders).ToListAsync();
         }
 
