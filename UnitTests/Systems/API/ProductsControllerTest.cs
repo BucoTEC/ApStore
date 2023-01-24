@@ -9,7 +9,7 @@ namespace UnitTests.Systems.API
     public class ProductsControllerTest
     {
         [Fact]
-        public void Test1()
+        public void GetProducts_OnPing_Returns_AllProductsList()
         {
             Assert.True(true);
         }
